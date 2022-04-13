@@ -1,4 +1,7 @@
 <?php
+
+    $tel = '086 738 29 23';
+    $test = 'My Name is Dwayne';
     if (isset($_POST['test'], $_POST['tel'])) {
         $test = $_POST['test'];
         $tel = $_POST['tel'];
