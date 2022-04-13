@@ -1,0 +1,18 @@
+/* general settings */
+body {
+    text-align: center;
+}
+
+/* specific for home.php file */
+
+#header_home {
+    magin-right: 1vm;
+}
+
+#loginButton{
+    margin-right: 0px;
+}
+
+#questions{
+
+}
