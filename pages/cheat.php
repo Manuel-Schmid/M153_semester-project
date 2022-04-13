@@ -1,5 +1,4 @@
 <?php
-
     $tel = '086 738 29 23';
     $test = 'My Name is Dwayne';
     if (isset($_POST['test'], $_POST['tel'])) {
@@ -8,6 +7,7 @@
         echo 'Wert von Test ist: ' . $test;
         echo '<br>';
         echo 'Wert von Tel ist: ' . $tel;
+        echo '<br>';
     } else {
         echo 'bitte füllen sie das form aus';
     }
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <h1>Olma</h1>
+    <h1>Olma 2</h1>
     <img src="../assets/logo.jpg" alt="" width="200">
 
     <p><?php echo $tel ?></p>
