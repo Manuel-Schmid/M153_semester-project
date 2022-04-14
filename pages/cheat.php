@@ -23,7 +23,7 @@
 </head>
 <body>
     <h1>Olma 2</h1>
-    <img src="../assets/logo.jpg" alt="" width="200">
+    <img src="../assets/Logo-M153.svg" alt="" width="200">
 
     <p><?php echo $tel ?></p>
 
