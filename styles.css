@@ -16,3 +16,12 @@ body {
 #questions{
 
 }
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submitbutton{
+    margin-top: 20px;
+}
