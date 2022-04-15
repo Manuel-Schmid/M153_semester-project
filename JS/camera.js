@@ -10,3 +10,12 @@ function takeAPicture() {
     document.querySelector("a").href = picture;
 }
 
+function button_clicked(){
+    document.getElementById("btn_retake").innerHTML = '<button onclick="">Erneut aufnehmen</button>';
+}
+
+function start(){
+    //some other html/css shit here
+    takeAPicture();
+}
+

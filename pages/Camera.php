@@ -1,16 +1,5 @@
-<?php //this will be edited to post directly on the server
-//$tel = '086 738 29 23';
-//$test = 'My Name is Dwayne';
-//if (isset($_POST['test'], $_POST['tel'])) {
-//    $test = $_POST['test'];
-//    $tel = $_POST['tel'];
-//    echo 'Wert von Test ist: ' . $test;
-//    echo '<br>';
-//    echo 'Wert von Tel ist: ' . $tel;
-//    echo '<br>';
-//} else {
-//    echo 'bitte füllen sie das form aus';
-//}
+<?php
+
 ?>
 
 <!DOCTYPE html>
@@ -25,18 +14,18 @@
 <img src="../assets/Logo-M153.svg" alt="" width="70">
 <h1 class="center">Foto aufnehmen</h1>
 
-<div class="camera center">
-    <video id="webcam" autoplay playsinline width="640" height="480"></video>
-    <canvas id="canvas"></canvas>
-    <button class="center"><a download onclick="takeAPicture()">TakeASnap</a> </button>
+<div class="camera">
+    <video id="webcam" autoplay playsinline width="auto" height="480" class="center"></video>
+    <canvas id="canvas" class="d-none center"></canvas>
+    <audio id="snapSound" src="../audio/snap.wav" preload="auto"></audio>
 
-    <script type="text/javascript" src="../JS/camera.js"></script>
-
-<!--    <div class="controls">-->
-<!--        <form action="cheat.php" method="post">-->
-<!--            <input type="submit" name="next" value="Weiter">-->
-<!--        </form>-->
-<!--    </div>-->
+    <div class="camera_controls">
+        <form action="Registration.php" method="post">
+            <input type="button" class="center" onclick="takeAPicture() button_clicked()" value="Bild aufnehmen"></input>
+            <script type="text/javascript" src="../JS/camera.js"></script>
+            <input type="submit" name="next" value="Weiter" class="center">
+        </form>
+    </div>
 </div>
 
 </body>
