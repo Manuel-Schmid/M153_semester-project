@@ -26,32 +26,32 @@
 <form action="Registration.php" method="post" id="questions">
     <table class="center">
         <tr>
-            <td>Vorname:</td>
-            <td><input type="text" name="firstname"></td>
+            <td><label for="lblFirstName">Vorname:</label></td>
+            <td><input type="text" name="inFirstname"></td>
         </tr>
         <tr>
-            <td>Nachname:</td>
-            <td><input type="text" name="lastname"></td>
+            <td><label>Nachname:</label></td>
+            <td><input type="text" name="inLastname"></td>
         </tr>
         <tr>
-            <td>E-Mail:</td>
-            <td><input type="email" name="email"></td>
+            <td><label for="lblEmail">E-Mail:</label></td>
+            <td><input type="email" name="inEmail"></td>
         </tr>
         <tr>
-            <td>Tel.:</td>
-            <td><input type="tel" name="phone"></td>
+            <td><label for="lblPhone">Tel.:</label></td>
+            <td><input type="tel" name="inPhone"></td>
         </tr>
         <tr>
-            <td>Strasse:</td>
-            <td><input type="text" name="street"></td>
+            <td><label for="lblStreet">Strasse:</label></td>
+            <td><input type="text" name="inStreet"></td>
         </tr>
         <tr>
-            <td>PLZ:</td>
-            <td><input type="number" name="zip"></td>
+            <td><label for="lblZip">PLZ:</label></td>
+            <td><input type="number" name="inZip"></td>
         </tr>
         <tr>
-            <td>Ort:</td>
-            <td><input type="text" name="town"></td>
+            <td><label for="lbltown">Ort:</label></td>
+            <td><input type="text" name="inTown"></td>
         </tr>
     </table>
 
