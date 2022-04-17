@@ -11,7 +11,12 @@ body {
     height: 100%;
 }
 
-/* specific for admin-view.php file */
+.currentPage{
+    background-color: gray;
+    color: blue;
+}
+
+/* specific for adminQuestion.php file */
 .admin_content{
     height: 100vh;
     width: 90vw;
@@ -25,6 +30,7 @@ body {
     right: 0;
     top: 0;
 }
+
 
 /* specific for home.php file */
 

@@ -7,7 +7,7 @@
 </head>
 <body id="admin-view_body">
     <section class="admin_content">
-        <form action="admin-view.php" action="post">
+        <form action="adminQuestion.php" action="post">
             <p>Question</p>
             <input type="text" name="Question">
             <p>Anwser 1</p>
@@ -22,10 +22,10 @@
     </section>
 
     <section class="admin_sidebar">
-        <a href="admin-view.php">Questions</a><br>
-        <a>Gallery</a><br>
-        <a>Date</a><br>
-        <a>Winner</a><br>
+        <a href="adminQuestion.php" class="currentPage">Questions</a><br>
+        <a href="adminGallery.php">Gallery</a><br>
+        <a href="adminData.php">Date</a><br>
+        <a href="adminWinner.php">Winner</a><br>
     </section>
 
 
