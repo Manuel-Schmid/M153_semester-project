@@ -9,21 +9,24 @@
     <title>Olma | Home</title>
     <link rel="stylesheet" href="../styles.css">
     <script type="text/javascript" src="../JS/webcam-easy.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 </head>
 <body>
 <img src="../assets/Logo-M153.svg" alt="" width="70">
 <h1 class="center">Foto aufnehmen</h1>
 
 <div class="camera">
-    <video id="webcam" autoplay playsinline width="auto" height="480"></video>
-    <canvas id="canvas" class="d-none"></canvas>
+    <video id="webcam" autoplay="" playsinline="" width="auto" height="480" class="center"></video>
+    <canvas id="canvas" class="center"></canvas>
     <audio id="snapSound" src="../audio/snap.wav" preload="auto"></audio>
 
     <div class="camera_controls">
         <form action="Registration.php" method="post">
-            <input type="button" class="center" onclick="takeAPicture(), button_clicked()" value="Bild aufnehmen"></input>
-            <script type="text/javascript" src="../JS/camera.js"></script>
+            <input type="button" class="center" onclick="takeAPicture(), button_clicked()" value="Foto aufnehmen"></input>
+            <input type="button" name="reshoot" value="Neu" class="center" onclick="reshoot()"><i class="icon-user icon-white"></i></input>
             <input type="submit" name="next" value="Weiter" class="center">
+            <script type="text/javascript" src="../JS/camera.js"></script>
         </form>
     </div>
 </div>
