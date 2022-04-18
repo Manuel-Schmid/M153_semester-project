@@ -11,24 +11,43 @@ body {
     height: 100%;
 }
 
-.currentPage{
-    background-color: gray;
-    color: blue;
+#currentPage{
+    background-color: gray
 }
 
-/* specific for adminQuestion.php file */
+
+/* specific for admin pages */
+
+.sidebarItem{
+    height: 5vh;
+}
+
 .admin_content{
+
+    background-color: white;
+    width: 80%;
+    position: absolute;
+    height: 470px;
+    /*
     height: 100vh;
     width: 90vw;
     float: left;
+    */
 }
 
 .admin_sidebar{
+    /*
     width: 10vw;
     height: 100vh;
     float: right;
     right: 0;
     top: 0;
+    */
+    width: 20%;
+    right: 0px;
+    position: absolute;
+    margin-bottom: 0;
+    height: 470px;
 }
 
 
