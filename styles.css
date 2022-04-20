@@ -11,15 +11,32 @@ body {
     height: 100%;
 }
 
+/* specific for admin pages */
+
 #currentPage{
-    background-color: gray
+    background-color: black;
+}
+
+#currentPage:hover{
+    background-color: darkblue;
 }
 
 
-/* specific for admin pages */
+.sidebarRemoveLink{
+    text-decoration: none;
+}
 
 .sidebarItem{
-    height: 5vh;
+    height: 7vh;
+    text-align: center;
+    line-height: 7vh;
+    color: white;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+
+.sidebarItem:hover{
+    background-color: darkblue;
 }
 
 .admin_content{
@@ -27,27 +44,16 @@ body {
     background-color: white;
     width: 80%;
     position: absolute;
-    height: 470px;
-    /*
     height: 100vh;
-    width: 90vw;
-    float: left;
-    */
 }
 
 .admin_sidebar{
-    /*
-    width: 10vw;
-    height: 100vh;
-    float: right;
-    right: 0;
-    top: 0;
-    */
     width: 20%;
-    right: 0px;
+    right: 0;
     position: absolute;
     margin-bottom: 0;
-    height: 470px;
+    height: 100vh;
+    background-color: gray;
 }
 
 
@@ -58,11 +64,7 @@ body {
 }
 
 #loginButton{
-    margin-right: 0px;
-}
-
-#questions{
-
+    margin-right: 0;
 }
 
 .center {
