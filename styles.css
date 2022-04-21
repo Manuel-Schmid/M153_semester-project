@@ -59,6 +59,26 @@ body {
 
 /* specific for home.php file */
 
+.answers{
+    color: white;
+}
+
+#answer1{
+    background-color: red;
+}
+
+#answer2{
+    background-color: blue;
+}
+
+#answer3{
+    background-color: green;
+}
+
+#answer4{
+    background-color: #e6b800;
+}
+
 #header_home {
     magin-right: 1vm;
 }

@@ -16,7 +16,7 @@
     <input type="text">
     <br>
     <br>
-    <input type="button" value="submit">
+    <a href="adminQuestion.php"><input type="button" value="submit"></a>
 </form>
 
 </body>
