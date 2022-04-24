@@ -11,33 +11,91 @@ body {
     height: 100%;
 }
 
-/* specific for admin-view.php file */
+/* specific for admin pages */
+
+#currentPage{
+    background-color: black;
+}
+
+#currentPage:hover{
+    background-color: darkblue;
+}
+
+
+.sidebarRemoveLink{
+    text-decoration: none;
+}
+
+.sidebarItem{
+    height: 7vh;
+    text-align: center;
+    line-height: 7vh;
+    color: white;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+
+.sidebarItem:hover{
+    background-color: darkblue;
+}
+
 .admin_content{
+
+    background-color: white;
+    width: 80%;
+    position: absolute;
     height: 100vh;
-    width: 90vw;
-    float: left;
 }
 
 .admin_sidebar{
-    width: 10vw;
-    height: 100vh;
-    float: right;
+    width: 20%;
     right: 0;
-    top: 0;
+    position: absolute;
+    margin-bottom: 0;
+    height: 100vh;
+    background-color: gray;
 }
 
+
 /* specific for home.php file */
+
+.answers{
+    color: white;
+}
+
+.buttonExample {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#answer1{
+    background-color: red;
+}
+
+#answer2{
+    background-color: blue;
+}
+
+#answer3{
+    background-color: green;
+}
+
+#answer4{
+    background-color: #e6b800;
+}
 
 #header_home {
     magin-right: 1vm;
 }
 
 #loginButton{
-    margin-right: 0px;
-}
-
-#questions{
-
+    margin-right: 0;
 }
 
 .center {
