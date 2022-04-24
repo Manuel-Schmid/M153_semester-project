@@ -23,10 +23,10 @@
 
     <div class="camera_controls">
         <form action="Registration.php" method="post">
-            <input type="button" class="center" onclick="takeAPicture(), button_clicked()" value="Foto aufnehmen"></input>
-            <input type="button" name="reshoot" value="Neu" class="center" onclick="reshoot()"><i class="icon-user icon-white"></i></input>
-            <input type="submit" name="next" value="Weiter" class="center">
+            <input type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"></input>
+            <input type="button" name="reshoot" onclick="reshoot_pic()" value="Neu" class="center"></input>
             <script type="text/javascript" src="../JS/camera.js"></script>
+            <input type="submit" name="next" value="Weiter" class="center">
         </form>
     </div>
 </div>

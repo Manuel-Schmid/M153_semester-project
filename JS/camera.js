@@ -14,18 +14,21 @@ catch (error){
     console.log(error);
 }
 
-function takeAPicture() {
-    picture = webcam.snap();
-    console.log(picture);
-    document.querySelector("a").href = picture;
+function reshoot_pic() {
+    const context = document.getElementById("canvas").getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function reshoot(){
-    document.getElementById("canvas").set(null);
+    const context = document.getElementById("canvas").getContext('2d');
+    console.log(document.getElementById("canvas"));
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function stop(){
-    webcam.stop();
+function takeAPicture() {
+    picture = webcam.snap();
+    console.log(picture);
+    // document.querySelector("a").href = picture;
 }
 
 
