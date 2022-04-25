@@ -1,11 +1,11 @@
-<?
+<?php
+
+include_once('../confidential/db_connection.php');
 
 if(isset($_POST['password'])) {
-    echo 'Mein Name ist Manuel';
     $pwd = $_POST['password'];
     if ($pwd == $_SESSION['adminPWD']) {
-        echo 'Hallo';
-        header('adminQuestion.php');
+        header('LOCATION:adminQuestion.php');
     }
 }
 ?>
