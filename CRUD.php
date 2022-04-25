@@ -1,5 +1,5 @@
 <?php
-include('confidential/db_connection.php');
+include_once('confidential/db_connection.php');
 
 function getAllPrizes(): array {
     global $pdo;
@@ -8,3 +8,7 @@ function getAllPrizes(): array {
     return $query->fetchAll();
 }
 
+function checkAdminPW($pw): int {
+    global $adminPWD;
+    return $pw == $adminPWD;
+}

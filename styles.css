@@ -1,20 +1,101 @@
 /* general settings */
-body {
-    text-align: center;
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+body {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* specific for admin pages */
+
+#currentPage{
+    background-color: black;
+}
+
+#currentPage:hover{
+    background-color: darkblue;
+}
+
+
+.sidebarRemoveLink{
+    text-decoration: none;
+}
+
+.sidebarItem{
+    height: 7vh;
+    text-align: center;
+    line-height: 7vh;
+    color: white;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+
+.sidebarItem:hover{
+    background-color: darkblue;
+}
+
+.admin_content{
+
+    background-color: white;
+    width: 80%;
+    position: absolute;
+    height: 100vh;
+}
+
+.admin_sidebar{
+    width: 20%;
+    right: 0;
+    position: absolute;
+    margin-bottom: 0;
+    height: 100vh;
+    background-color: gray;
+}
+
+
 /* specific for home.php file */
+
+.answers{
+    color: white;
+}
+
+.buttonExample {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#answer1{
+    background-color: red;
+}
+
+#answer2{
+    background-color: blue;
+}
+
+#answer3{
+    background-color: green;
+}
+
+#answer4{
+    background-color: #e6b800;
+}
 
 #header_home {
     magin-right: 1vm;
 }
 
 #loginButton{
-    margin-right: 0px;
-}
-
-#questions{
-
+    margin-right: 0;
 }
 
 /*A center class, to use every wehre */
