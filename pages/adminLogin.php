@@ -1,11 +1,14 @@
 <?php
 
-include_once('../confidential/db_connection.php');
+include_once('../CRUD.php');
 
 if(isset($_POST['password'])) {
     $pwd = $_POST['password'];
-    if ($pwd == $_SESSION['adminPWD']) {
-        header('LOCATION:adminQuestion.php');
+//    echo checkAdminPW($pwd);
+    if (checkAdminPW($pwd) == 1) {
+        header('Location:adminQuestion.php');
+    } else {
+        echo 'YOU ARE WRONG.';
     }
 }
 ?>
@@ -23,7 +26,7 @@ if(isset($_POST['password'])) {
     <h1>Admin-Login</h1>
 </header>
 
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+<form action="adminLogin.php" method="post">
     <label>Password: </label>
     <input type="text" name="password">
     <br>
