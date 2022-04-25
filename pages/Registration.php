@@ -1,49 +1,62 @@
 <?php
 //include_once('../confidential/db_connection.php');
-
+$allset = 0;
 $firstnameError = $lastNameError = $emailError = $phoneError = $streetError = $zipError = $townError = '';
 $firstname = $lastname = $email = $phone = $street = $zip = $town = '';
+if(isset($_POST)) {
+    if (empty($_POST['inFirstname'])) {
+        $firstnameError = 'Bitte Vorname eingeben';
+    } else {
+        $firstname = $_POST['inFirstname'];
+        $allset++;
+    }
 
-if (empty($_POST['inFirstname'])) {
-    $firstnameError = 'Bitte Vorname eingeben';
-} else {
-    $firstname = $_POST['inFirstname'];
-}
+    if (empty($_POST['inFirstname'])) {
+        $lastNameError = 'Bitte Vorname eingeben';
+    } else {
+        $lastname = $_POST['inFirstname'];
+        $allset++;
+    }
 
-if (empty($_POST['inFirstname'])) {
-    $lastNameError = 'Bitte Vorname eingeben';
-} else {
-    $lastname = $_POST['inFirstname'];
-}
+    if (empty($_POST['inEmail'])) {
+        $emailError = 'Bitte E-Mail eingeben';
+    } else {
+        $email = $_POST['inEmail'];
+        $allset++;
+    }
 
-if (empty($_POST['inEmail'])) {
-    $emailError = 'Bitte E-Mail eingeben';
-} else {
-    $email = $_POST['inEmail'];
-}
+    if (empty($_POST['inPhone'])) {
+        $phoneError = 'Bitte Tel.Nr. eingeben';
+    } else {
+        $phone = $_POST['inPhone'];
+        $allset++;
+    }
 
-if (empty($_POST['inPhone'])) {
-    $phoneError = 'Bitte Tel.Nr. eingeben';
-} else {
-    $phone = $_POST['inPhone'];
-}
+    if (empty($_POST['inStreet'])) {
+        $streetError = 'Bitte Strasse eingeben';
+    } else {
+        $street = $_POST['inStreet'];
+        $allset++;
+    }
 
-if (empty($_POST['inStreet'])) {
-    $streetError = 'Bitte Strasse eingeben';
-} else {
-    $street = $_POST['inStreet'];
-}
+    if (empty($_POST['inZip'])) {
+        $zipError = 'Bitte PLZ eingeben';
+    } else {
+        $zip = $_POST['inZip'];
+        $allset++;
+    }
 
-if (empty($_POST['inZip'])) {
-    $zipError = 'Bitte PLZ eingeben';
-} else {
-    $zip = $_POST['inZip'];
-}
+    if (empty($_POST['inTown'])) {
+        $townError = 'Bitte Stadt eingeben';
+    } else {
+        $town = $_POST['inTown'];
+        $allset++;
+    }
 
-if (empty($_POST['inTown'])) {
-    $townError = 'Bitte Stadt eingeben';
-} else {
-    $town = $_POST['inTown'];
+    if($allset = 7){
+        header('LOCATION:PrizesScreen.php');
+        exit();
+    }
 }
 ?>
 
