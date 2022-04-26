@@ -1,6 +1,7 @@
 <?php
 
 include_once('../CRUD.php');
+$error = '';
 
 if(isset($_POST['password'])) {
     $pwd = $_POST['password'];
@@ -8,7 +9,7 @@ if(isset($_POST['password'])) {
     if (checkAdminPW($pwd) == 1) {
         header('Location:adminQuestion.php');
     } else {
-        echo 'YOU ARE WRONG.';
+        $error = 'YOU ARE WRONG.';
     }
 }
 ?>
@@ -32,6 +33,8 @@ if(isset($_POST['password'])) {
     <br>
     <br>
     <input type="submit" value="submit">
+    <br>
+    <p class="error"><?php echo $error ?></p>
 </form>
 
 </body>

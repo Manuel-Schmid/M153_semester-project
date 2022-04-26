@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS olmadb.user (
   dob DATE NOT NULL,
   eMail VARCHAR(45) NOT NULL,
   phoneNr VARCHAR(45) NOT NULL,
+  
   postcode VARCHAR(45) NOT NULL,
   answerCorrect BIT(1) NOT NULL,
   PRIMARY KEY (userID))
