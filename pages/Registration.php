@@ -1,8 +1,9 @@
 <?php
 //include_once('../confidential/db_connection.php');
 $allset = 0;
-$firstnameError = $lastNameError = $emailError = $phoneError = $streetError = $zipError = $townError = '';
-$firstname = $lastname = $email = $phone = $street = $zip = $town = '';
+$firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
+$firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
+
 if(isset($_POST)) {
     if (empty($_POST['inFirstname'])) {
         $firstnameError = 'Bitte Vorname eingeben';
@@ -15,6 +16,13 @@ if(isset($_POST)) {
         $lastNameError = 'Bitte Vorname eingeben';
     } else {
         $lastname = $_POST['inFirstname'];
+        $allset++;
+    }
+
+    if (empty($_POST['inDOB'])) {
+        $firstnameError = 'Bitte Geburtsdatum eingeben';
+    } else {
+        $firstname = $_POST['inDOB'];
         $allset++;
     }
 
@@ -46,17 +54,17 @@ if(isset($_POST)) {
         $allset++;
     }
 
-    if (empty($_POST['inTown'])) {
-        $townError = 'Bitte Stadt eingeben';
+    if (empty($_POST['inCity'])) {
+        $cityError = 'Bitte Stadt eingeben';
     } else {
-        $town = $_POST['inTown'];
+        $city = $_POST['inCity'];
         $allset++;
     }
 
-    if($allset = 7){
-        header('LOCATION:PrizesScreen.php');
-        exit();
-    }
+//    if($allset = 8){
+//        header('LOCATION:PrizesScreen.php');
+//        exit();
+//    }
 }
 ?>
 
@@ -77,8 +85,12 @@ if(isset($_POST)) {
             <td><input type="text" name="inFirstname"><?php echo $firstnameError;?></td>
         </tr>
         <tr>
-            <td><label>Nachname:</label></td>
+            <td><label for="lblLastName">Nachname:</label></td>
             <td><input type="text" name="inLastname"><?php echo $lastNameError;?></td>
+        </tr>
+        <tr>
+            <td><label for="lblDOB">Geburtsdatum:</label></td>
+            <td><input type="date" name="inDOB"><?php echo $emailError;?></td>
         </tr>
         <tr>
             <td><label for="lblEmail">E-Mail:</label></td>
@@ -89,16 +101,16 @@ if(isset($_POST)) {
             <td><input type="tel" name="inPhone"><?php echo $phoneError;?></td>
         </tr>
         <tr>
-            <td><label for="lblStreet">Strasse:</label></td>
-            <td><input type="text" name="inStreet"><?php echo $streetError;?></td>
-        </tr>
-        <tr>
             <td><label for="lblZip">PLZ:</label></td>
             <td><input type="number" name="inZip"><?php echo $zipError;?></td>
         </tr>
         <tr>
-            <td><label for="lbltown">Ort:</label></td>
-            <td><input type="text" name="inTown"><?php echo $townError;?></td>
+            <td><label for="lblCity">Ort:</label></td>
+            <td><input type="text" name="inCity"><?php echo $cityError;?></td>
+        </tr>
+        <tr>
+            <td><label for="lblStreet">Strasse:</label></td>
+            <td><input type="text" name="inStreet"><?php echo $streetError;?></td>
         </tr>
     </table>
     <input type="submit" name="participate" value="Teilnehmen" class="center submitbutton">
