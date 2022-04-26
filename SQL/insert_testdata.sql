@@ -131,6 +131,7 @@ VALUES
 INSERT INTO `olmadb`.`prize`(`name`,`value`)VALUES('Fiat 500', 2);
 INSERT INTO `olmadb`.`prize`(`name`,`value`)VALUES('old rusty radio', 0.95);
 
+
 -- -----------------------------------------------------
 -- Table olmadb.selfie
 -- -----------------------------------------------------
