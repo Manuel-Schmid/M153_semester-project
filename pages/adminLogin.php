@@ -3,11 +3,12 @@
 include_once('../CRUD.php');
 $error = '';
 
-if(isset($_POST['password'])) {
+if (isset($_POST['password'])) {
     $pwd = $_POST['password'];
 //    echo checkAdminPW($pwd);
     if (checkAdminPW($pwd) == 1) {
         header('Location:adminQuestion.php');
+        exit;
     } else {
         $error = 'YOU ARE WRONG.';
     }

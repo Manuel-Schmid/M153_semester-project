@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS olmadb.user (
   phoneNr VARCHAR(45) NOT NULL,
   
   postcode VARCHAR(45) NOT NULL,
+  city varchar(255) NOT NULL,
+  address varchar(255) NOT NULL,
   answerCorrect BIT(1) NOT NULL,
   PRIMARY KEY (userID))
 ENGINE = InnoDB;

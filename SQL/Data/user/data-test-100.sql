@@ -1,8 +1,3 @@
-USE olmadb ;
-
--- -----------------------------------------------------
--- Table olmadb.user
--- -----------------------------------------------------
 INSERT INTO `olmadb`.`user` (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postcode`, `city`, `address`, `answerCorrect`)
 VALUES
   ("Skyler","Bray","15.12.22","sbray@yahoo.ca","(05827) 2216636","6168","Vlissegem","Ap #220-195 Sapien, Av.",1),
@@ -123,34 +118,3 @@ VALUES
   ("Damian","Barrera","02.02.23","damianbarrera4175@protonmail.org","(089) 59424434","8120","Seydişehir","Ap #807-1620 Ultricies Ave",0),
   ("Wynne","Bishop","06.01.22","w-bishop3896@google.couk","(0742) 41764511","4533","Worcester","Ap #933-6471 Ornare Street",1),
   ("Lillian","Castillo","19.12.22","castillo-lillian@hotmail.couk","(033543) 486156","6381","Lusevera","8335 Lobortis Ave",1);
-
-
--- -----------------------------------------------------
--- Table olmadb.prize
--- -----------------------------------------------------
-INSERT INTO `olmadb`.`prize`(`name`,`value`)VALUES('Fiat 500', 2);
-INSERT INTO `olmadb`.`prize`(`name`,`value`)VALUES('old rusty radio', 0.95);
-
-
--- -----------------------------------------------------
--- Table olmadb.selfie
--- -----------------------------------------------------
-
-
-
--- -----------------------------------------------------
--- Table olmadb.quiz
--- -----------------------------------------------------
-
-
--- -----------------------------------------------------
--- Table olmadb.wrongAnswers
--- -----------------------------------------------------
-
-
--- -----------------------------------------------------
--- Table olmadb.admin
--- -----------------------------------------------------
-INSERT INTO `olmadb`.`admin`
-(`adminID`, `password`) VALUES (1, 'manyIsGod!');
-
