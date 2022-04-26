@@ -9,6 +9,9 @@ function getAllPrizes(): array {
 }
 
 function checkAdminPW($pw): int {
-    global $adminPWD;
-    return $pw == $adminPWD;
+    global $pdo;
+    $query = $pdo->prepare('SELECT password FROM admin where adminID=1;');
+    $query->execute();
+    return ($query->fetch()[0] == $pw);
 }
+
