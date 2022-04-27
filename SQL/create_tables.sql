@@ -33,6 +33,7 @@ DROP TABLE IF EXISTS olmadb.prize ;
 CREATE TABLE IF NOT EXISTS olmadb.prize (
   prizeID INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NOT NULL,
+  amount INT(11) NOT NULL,
   value DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (prizeID))
 ENGINE = InnoDB;
