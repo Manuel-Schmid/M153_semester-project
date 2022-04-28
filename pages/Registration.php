@@ -5,8 +5,8 @@ $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $stre
 $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
 
 if (isset($_POST['participate'])) {
-    echo 'participated';
-    if (isset($_POST['inFirstname'])) {
+
+    if (!empty($_POST['inFirstname'])) {
 
         $firstname = $_POST['inFirstname'];
         $allset++;
@@ -14,23 +14,23 @@ if (isset($_POST['participate'])) {
         $firstnameError = 'Bitte Vorname eingeben';
     }
 
-    if (isset($_POST['inFirstname'])) {
+    if (!empty($_POST['inLastname'])) {
 
-        $lastname = $_POST['inFirstname'];
+        $lastname = $_POST['inLastname'];
         $allset++;
     } else {
-        $lastNameError = 'Bitte Vorname eingeben';
+        $lastNameError = 'Bitte Nachnamen eingeben';
     }
 
-    if (isset($_POST['inDOB'])) {
+    if (!empty($_POST['inDOB'])) {
 
-        $firstname = $_POST['inDOB'];
+        $dob = $_POST['inDOB'];
         $allset++;
     } else {
-        $firstnameError = 'Bitte Geburtsdatum eingeben';
+        $dobError = 'Bitte Geburtsdatum eingeben';
     }
 
-    if (isset($_POST['inEmail'])) {
+    if (!empty($_POST['inEmail'])) {
 
         $email = $_POST['inEmail'];
         $allset++;
@@ -38,7 +38,7 @@ if (isset($_POST['participate'])) {
         $emailError = 'Bitte E-Mail eingeben';
     }
 
-    if (isset($_POST['inPhone'])) {
+    if (!empty($_POST['inPhone'])) {
 
         $phone = $_POST['inPhone'];
         $allset++;
@@ -47,7 +47,7 @@ if (isset($_POST['participate'])) {
 
     }
 
-    if (isset($_POST['inStreet'])) {
+    if (!empty($_POST['inStreet'])) {
 
         $street = $_POST['inStreet'];
         $allset++;
@@ -55,7 +55,7 @@ if (isset($_POST['participate'])) {
         $streetError = 'Bitte Strasse eingeben';
     }
 
-    if (isset($_POST['inZip'])) {
+    if (!empty($_POST['inZip'])) {
 
         $zip = $_POST['inZip'];
         $allset++;
@@ -63,7 +63,7 @@ if (isset($_POST['participate'])) {
         $zipError = 'Bitte PLZ eingeben';
     }
 
-    if (isset($_POST['inCity'])) {
+    if (!empty($_POST['inCity'])) {
 
         $city = $_POST['inCity'];
         $allset++;
@@ -73,8 +73,8 @@ if (isset($_POST['participate'])) {
     }
 
     if ($allset == 8) {
-        //header('LOCATION:PrizesScreen.php');
-        //exit();
+        header('Location: PrizesScreen.php');
+        exit();
     }
 }
 ?>
@@ -101,7 +101,7 @@ if (isset($_POST['participate'])) {
         </tr>
         <tr>
             <td><label for="lblDOB">Geburtsdatum:</label></td>
-            <td><input type="date" name="inDOB"><?php echo $emailError; ?></td>
+            <td><input type="date" name="inDOB"><?php echo $dobError; ?></td>
         </tr>
         <tr>
             <td><label for="lblEmail">E-Mail:</label></td>
