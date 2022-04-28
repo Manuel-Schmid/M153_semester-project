@@ -22,7 +22,7 @@
     <audio id="snapSound" src="../audio/snap.wav" preload="auto"></audio>
 
     <div class="camera_controls">
-        <form action="Registration.php" method="post">
+        <form action="registration.php" method="post">
             <input type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"></input>
             <input type="button" name="reshoot" onclick="reshoot_pic()" value="Neu" class="center"></input>
             <script type="text/javascript" src="../JS/camera.js"></script>
