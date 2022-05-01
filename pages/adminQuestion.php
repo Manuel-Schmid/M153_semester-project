@@ -12,10 +12,10 @@
             <h1> Create a new Question </h1>
             <br>
             <p>Question: <input type="text" name="Question"></p>
-            <p>Anwser 1: <input type="text" name="Answer1"></p>
-            <p>Anwser 2: <input type="text" name="Answer2"></p>
-            <p>Anwser 3: <input type="text" name="Answer3"></p>
-            <p>Anwser 4: <input type="text" name="Answer4"></p>
+            <p>Wrong Answer 1: <input type="text" name="WrongAnswer1"></p>
+            <p>Wrong Answer 2: <input type="text" name="WrongAnswer2"></p>
+            <p>Wrong Answer 3: <input type="text" name="WrongAnswer3"></p>
+            <p>Correct Answer: <input type="text" name="CorrectAnswer"></p>
             <br>
             <input type="button" value=" submit " name="submitQuestion">
         </form>

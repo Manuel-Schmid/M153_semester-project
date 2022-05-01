@@ -1,3 +1,104 @@
+<?php
+include_once('../CRUD.php');
+
+
+function printWinner(array $list, int $prizeID){
+    foreach ($list as $element){
+        $user = getUser($element);
+        $prize = getPrize($prizeID);
+        echo $user['fistName'] + $user['lastName'] + "has won: " + $prize['name'] + " Email: " + $user['email'];
+    }
+}
+
+function rollWinner(int $amount){
+    $winnerList = array();
+    $luckyWinnerList = array();
+    $veryLuckyWinnerList = array();
+    $superLuckyWinnerList = array();
+    echo "made arrays";
+    for($i = 0; $i<33; $i++){
+        $key = -1;
+        while ($key == -1){
+            $winner = rand(1, $amount);
+            if (($key = array_search($winner, $winnerList) == false)){
+                $winnerList[$i] = $winner;
+            }
+            echo "I AM STUCK IN A LOOP HELP";
+        }
+
+    }
+
+    for($i = 0; $i<13; $i++){
+        echo "or am I not?";
+        $key = -1;
+        while($key == -1){
+            $luckyWinner = rand(1, 33);
+            if (($key = array_search($luckyWinner, $luckyWinnerList) == false)){
+                $luckyWinnerList[$i] = $winnerList[$luckyWinner];
+                if (($key = array_search($luckyWinner, $winnerList)) !== false) {
+                    unset($winnerList[$key]);
+                }
+            }
+        }
+    }
+    for($i = 0; $i<2; $i++){
+        $key = -1;
+        while($key==-1){
+            $veryLuckyWinner = rand(1, 13);
+            $veryLuckyWinnerList[$i] = $luckyWinnerList[$veryLuckyWinner];
+            if (($key = array_search($veryLuckyWinner, $luckyWinnerList)) !== false) {
+                unset($luckyWinnerList[$key]);
+            }
+        }
+    }
+    for($i = 0; $i<1; $i++){
+        $superLuckyWinner = rand(1, 2);
+        $superLuckyWinner[$i] = $veryLuckyWinnerList[$superLuckyWinner];
+
+    }
+    printWinner($winnerList, 1);
+    printWinner($luckyWinnerList, 2);
+    printWinner($veryLuckyWinnerList, 3);
+    printWinner($superLuckyWinnerList, 4);
+
+
+
+    /*
+    for($i = 0; $i<20; $i++){
+        $winner = rand(1, $amount);
+        $user = getUser($winner);
+        switch ($prizeStatus[$winner]){
+            case 0:
+                echo $user['firstName'] + $user['lastName'] + "has won" + getPrize(2);
+                $prizeStatus[$winner] = 1;
+                break;
+            case 1:
+                echo $user['firstName'] + $user['lastName'] + "has won" + getPrize(1);
+                $prizeStatus[$winner] = 2;
+                break;
+            default:
+                rollWinner($amount, $prizeStatus);
+                break;
+        }
+    }
+    */
+}
+
+
+if(isset($_POST['pickWinner'])){
+    echo 'should work';
+    $users = getAllUsers();
+    echo 'is the problem here?';
+    $amount = 0;
+    foreach ($users as $user){
+        $amount += 1;
+    }
+    echo 'test';
+    rollWinner($amount);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +112,9 @@
     <h1>Winner</h1>
     <br>
     <form action="adminWinner.php" method="post">
-        <input type="button" name="pickWinner" value="Pick">
+        <input type="submit" name="pickWinner" value="Pick">
     </form>
-    <form action="" method="get">
 
-    </form>
 </section>
 
 <section class="admin_sidebar">
