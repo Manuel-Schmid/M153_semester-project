@@ -73,7 +73,7 @@ if (isset($_POST['participate'])) {
     }
 
     if ($allset == 8) {
-        header('Location: PrizesScreen.php');
+        header('Location: prizesScreen.php');
         exit();
     }
 }
@@ -89,7 +89,7 @@ if (isset($_POST['participate'])) {
 <body>
 <img src="../assets/Logo-M153.svg" alt="" width="150">
 <h1 class="center">Registration</h1>
-<form action="Registration.php" method="post" id="questions">
+<form action="registration.php" method="post" id="questions">
     <table class="center">
         <tr>
             <td><label for="lblFirstName">Vorname:</label></td>
