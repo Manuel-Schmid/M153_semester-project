@@ -1,5 +1,5 @@
 <?php
-
+//Implement, that the picture is saved in something like a session and only save it when the user entered his name
 ?>
 
 <!DOCTYPE html>
