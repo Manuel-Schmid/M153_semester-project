@@ -13,6 +13,18 @@ function checkAdminPW($pw): int {
     return $pw == $adminPWD;
 }
 
+function getPrize($id): string {
+    global $pdo;
+    $query = $pdo->prepare('SELECT name FROM prize WHERE prizeID = $id');
+    return $query->fetchAll();
+}
+
+function getUser($id): array {
+    global $pdo;
+    $query = $pdo->prepare('SELECT * FROM user WHERE userID = $id');
+    return $query->fetchAll();
+}
+
 function getAllUsers(): array {
     global $pdo;
     $query = $pdo->prepare('SELECT * FROM user;');
