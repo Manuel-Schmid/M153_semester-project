@@ -17,7 +17,10 @@ CREATE TABLE IF NOT EXISTS olmadb.user (
   dob DATE NOT NULL,
   eMail VARCHAR(45) NOT NULL,
   phoneNr VARCHAR(45) NOT NULL,
+  
   postcode VARCHAR(45) NOT NULL,
+  city varchar(255) NOT NULL,
+  address varchar(255) NOT NULL,
   answerCorrect BIT(1) NOT NULL,
   PRIMARY KEY (userID))
 ENGINE = InnoDB;
@@ -30,6 +33,7 @@ DROP TABLE IF EXISTS olmadb.prize ;
 CREATE TABLE IF NOT EXISTS olmadb.prize (
   prizeID INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NOT NULL,
+  amount INT(11) NOT NULL,
   value DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (prizeID))
 ENGINE = InnoDB;

@@ -9,8 +9,10 @@ function getAllPrizes(): array {
 }
 
 function checkAdminPW($pw): int {
-    global $adminPWD;
-    return $pw == $adminPWD;
+    global $pdo;
+    $query = $pdo->prepare('SELECT password FROM admin where adminID=1;');
+    $query->execute();
+    return ($query->fetch()[0] == $pw);
 }
 
 function getPrize($id): string {
@@ -31,17 +33,3 @@ function getAllUsers(): array {
     $query->execute();
     return $query->fetchAll();
 }
-/*
-$query = $con->prepare('INSERT INTO spieler (vorname, nachname, highscore) VALUES (?,?,?);');
-$query->bindValue(1, $_POST['firstname']);
-$query->bindValue(2, $_POST['lastname']);
-$query->bindValue(3, $_POST['highscore']);
-$query->execute();
-
-$query = $con->prepare('DELETE FROM spieler WHERE highscore=0');
-$query->execute();
-
-$sql = "SELECT * FROM spieler ORDER BY highscore DESC";
-$stmt = $con->query($sql);
-$players = $stmt->fetchAll();
-*/

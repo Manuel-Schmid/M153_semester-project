@@ -154,13 +154,27 @@ span {
     margin-right: 0;
 }
 
+/*A center class, to use every wehre */
 .center {
     margin-left: auto;
     margin-right: auto;
 }
 
+/*Class to style Canvas in Camera.php*/
+#canvas {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/*Class to style the camera controls in Camera.php*/
 .camera_controls{
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
 }
+
+.error {
+    color: red;
+}
+
