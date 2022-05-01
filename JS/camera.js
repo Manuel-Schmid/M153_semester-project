@@ -28,6 +28,7 @@ function reshoot(){
 function takeAPicture() {
     picture = webcam.snap();
     console.log(picture);
+    sessionStorage.setItem("picture", picture);
     // document.querySelector("a").href = picture;
 }
 

@@ -1,5 +1,5 @@
 <?php
-
+include_once('../CRUD.php');
 $allset = 0;
 $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
 $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
@@ -73,6 +73,9 @@ if (isset($_POST['participate'])) {
     }
 
     if ($allset == 8) {
+        $nextID = getNextUserAutoIncrement();
+        postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city);
+        postPicture($nextID, "<script type='text/javascript'>localStorage.getItem('picture')</script>");
         header('Location: prizesScreen.php');
         exit();
     }
