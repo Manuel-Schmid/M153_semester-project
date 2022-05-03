@@ -10,78 +10,100 @@
         }
     }
 
-    function rollWinner(int $amount){
+    function printArr($arr) {
+        echo implode('|', $arr);
+        echo ' ||| Size: ' . sizeof($arr);
+        echo '<br>';
+    }
+
+    function removeOverlap($arr1, $arr2) {
+        $arr = $arr1;
+        foreach ($arr as $item) {
+            $index = array_search($item, $arr2);
+            if ($index != false) {
+                unset($arr[$index]);
+            }
+        }
+        return $arr;
+    }
+
+    function rollWinner(int $userCount){
         $winnerList = array();
         $luckyWinnerList = array();
         $veryLuckyWinnerList = array();
         $superLuckyWinnerList = array();
-        echo "made arrays";
-        for($i = 0; $i<33; $i++){
-            $key = -1;
-            while ($key == -1){
-                $winner = rand(1, $amount);
-                if (($key = array_search($winner, $winnerList) == false)){
-                    $winnerList[$i] = $winner;
-                }
-                echo "I AM STUCK IN A LOOP HELP";
-            }
+        $userIDs = getAllUserIDs();
+//        printArr($userIDs);
 
+        for($i = 0; $i<33; $i++) {
+            $key = -1;
+            while ($key == -1) {
+                $winner = rand(0, sizeof($userIDs)-1);
+                $key = array_search($winner, $winnerList);
+                if ($key == false) {
+                    $winnerList[$i] = $userIDs[$winner];
+                } else {
+                    $key = -1;
+                }
+            }
         }
 
-        for($i = 0; $i<13; $i++){
+//        printArr($winnerList);
+//        echo '<br>';
+//        echo $winnerList[5] . ', <br>';
+
+        for($i = 0; $i<13; $i++) {
             $key = -1;
-            while($key == -1){
-                $luckyWinner = rand(1, 33);
-                $key = array_search($luckyWinner, $luckyWinnerList);
-                if (!$key){
+            while($key == -1) {
+                $luckyWinner = rand(0, sizeof($winnerList) - 1);
+                $key = array_search($winnerList[$luckyWinner], $luckyWinnerList);
+                if ($key == false) {
+//                    echo $luckyWinner . ', <br>';
                     $luckyWinnerList[$i] = $winnerList[$luckyWinner];
-                    $key = array_search($luckyWinner, $winnerList);
-                    if ($key !== false) {
-                        unset($winnerList[$key]);
-                    }
-                }
-                else{
+                } else {
                     $key = -1;
                 }
-
             }
         }
+        printArr($winnerList);
+        printArr($luckyWinnerList);
+        printArr(removeOverlap($winnerList, $luckyWinnerList));
 
-        for($i = 0; $i<2; $i++){
-            $key = -1;
-            while($key == -1){
-                $veryLuckyWinner = rand(1, 13);
-                $key = array_search($veryLuckyWinner, $veryLuckyWinnerList);
-                if (!$key){
-                    $veryLuckyWinnerList[$i] = $luckyWinnerList[$veryLuckyWinner];
-                    $key = array_search($veryLuckyWinner, $luckyWinnerList);
-                    if ($key !== false) {
-                        unset($luckyWinnerList[$key]);
-                    }
-                }
-                else{
-                    $key = -1;
-                }
-
-            }
-        }
-
-
-        $superLuckyWinner = rand(1, 2);
-        $superLuckyWinnerList[0] = $veryLuckyWinnerList[$superLuckyWinner];
-        unset($veryLuckyWinnerList[$superLuckyWinner]);
-
-
-        printWinner($winnerList, 1);
-        printWinner($luckyWinnerList, 2);
-        printWinner($veryLuckyWinnerList, 3);
-        printWinner($superLuckyWinnerList, 4);
+//        for($i = 0; $i<2; $i++){
+//            $key = -1;
+//            while($key == -1){
+//                $veryLuckyWinner = rand(1, 13);
+//                $key = array_search($veryLuckyWinner, $veryLuckyWinnerList);
+//                if (!$key){
+//                    $veryLuckyWinnerList[$i] = $luckyWinnerList[$veryLuckyWinner];
+//                    $key = array_search($veryLuckyWinner, $luckyWinnerList);
+//                    if ($key !== false) {
+//                        unset($luckyWinnerList[$key]);
+//                    }
+//                }
+//                else{
+//                    $key = -1;
+//                }
+//
+//            }
+//        }
+//
+//
+//        $superLuckyWinner = rand(1, 2);
+//        $superLuckyWinnerList[0] = $veryLuckyWinnerList[$superLuckyWinner];
+//        unset($veryLuckyWinnerList[$superLuckyWinner]);
+//
+//
+//        printWinner($winnerList, 1);
+//        printWinner($luckyWinnerList, 2);
+//        printWinner($veryLuckyWinnerList, 3);
+//        printWinner($superLuckyWinnerList, 4);
 
 
 
         /*
         for($i = 0; $i<20; $i++){
-            $winner = rand(1, $amount);
+            $winner = rand(1, $userCount);
             $user = getUser($winner);
             switch ($prizeStatus[$winner]){
                 case 0:
@@ -93,7 +115,7 @@
                     $prizeStatus[$winner] = 2;
                     break;
                 default:
-                    rollWinner($amount, $prizeStatus);
+                    rollWinner($userCount, $prizeStatus);
                     break;
             }
         }
@@ -102,12 +124,8 @@
 
 
     if(isset($_POST['pickWinner'])){
-        $users = getAllUsers();
-        $amount = 0;
-        foreach ($users as $user){
-            $amount += 1;
-        }
-        rollWinner($amount);
+        $userCount = getUserCount();
+        rollWinner($userCount);
     }
 
 ?>
