@@ -17,6 +17,7 @@ function checkAdminPW($pw): int
     return ($query->fetch()[0] == $pw);
 }
 
+<<<<<<< HEAD
 function getNextUserAutoIncrement(): int {
     global $pdo;
     $query = $pdo->prepare("SELECT auto_increment  FROM INFORMATION_SCHEMA.TABLES WHERE table_name = `olmadb`.`user`");
@@ -49,3 +50,23 @@ function postPicture($userID, $picture)
     $query->execute();
 }
 
+=======
+function getPrize($id): string {
+    global $pdo;
+    $query = $pdo->prepare('SELECT name FROM prize WHERE prizeID = $id');
+    return $query->fetchAll();
+}
+
+function getUser($id): array {
+    global $pdo;
+    $query = $pdo->prepare('SELECT * FROM user WHERE userID = $id');
+    return $query->fetchAll();
+}
+
+function getAllUsers(): array {
+    global $pdo;
+    $query = $pdo->prepare('SELECT * FROM user;');
+    $query->execute();
+    return $query->fetchAll();
+}
+>>>>>>> master
