@@ -25,7 +25,8 @@ function getPrize($id): string {
 
 function getUser($id): array {
     global $pdo;
-    $query = $pdo->prepare('SELECT * FROM user WHERE userID = $id');
+    $query = $pdo->prepare('SELECT * FROM user WHERE userID = ?');
+    $query->bindValue(1,$id);
     return $query->fetchAll();
 }
 
@@ -38,15 +39,15 @@ function getAllUsers(): array {
 
 function getNextUserAutoIncrement(): int {
     global $pdo;
-    $query = $pdo->prepare("SELECT auto_increment  FROM INFORMATION_SCHEMA.TABLES WHERE table_name = `olmadb`.`user`");
+    $query = $pdo->prepare("SELECT auto_increment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = user ");
     $query->execute();
-    return $query->fetch()[0];
+    return $query->fetchAll();
 }
 
 function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $answercorrect)
 {
     global $pdo;
-    $query = $pdo->prepare('INSERT INTO `olmadb`.`user` (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postcode`, `city`, `address`, `answerCorrect`) VALUES(?,?,?,?,?,?,?,?,?)');
+    $query = $pdo->prepare('INSERT INTO user (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postcode`, `city`, `address`, `answerCorrect`) VALUES(?,?,?,?,?,?,?,?,?)');
     $query->bindValue(1, $firstname);
     $query->bindValue(2, $lastname);
     $query->bindValue(3, $dob);
@@ -62,8 +63,9 @@ function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip
 function postPicture($userID, $picture)
 {
     global $pdo;
-    $query = $pdo->prepare('INSERT INTO `olmadb`.`selfie` (`fk_userID`, `image`) VALUES(?,?)');
+    $query = $pdo->prepare('INSERT INTO selfie (`fk_userID`, `image`) VALUES(?,?)');
     $query->bindValue(1, $userID);
     $query->bindValue(2, $picture);
     $query->execute();
 }
+echo getNextUserAutoIncrement();
