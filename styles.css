@@ -3,6 +3,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 body {
@@ -57,10 +58,6 @@ body {
 }
 
 /* specific for adminData.php file */
-* {
-    font-family: Arial, sans-serif;
-}
-
 .form {
     top: 50%;
     width: 50%;
@@ -154,17 +151,27 @@ span {
     margin-right: 0;
 }
 
+/*Camera.php*/
 /*A center class, to use every wehre */
 .center {
+    z-index: 1;
+    position: center;
     margin-left: auto;
     margin-right: auto;
 }
 
 /*Class to style Canvas in Camera.php*/
-#canvas {
+.canvas {
     position: absolute;
-    z-index: 2;
     pointer-events: none;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.stack-top{
+    z-index: 2;
 }
 
 /*Class to style the camera controls in Camera.php*/
@@ -172,6 +179,10 @@ span {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.hidden{
+    visibility: hidden;
 }
 
 .error {
