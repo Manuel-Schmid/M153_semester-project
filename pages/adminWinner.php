@@ -95,15 +95,16 @@
         }
         $veryLuckyWinnerList = removeOverlap($veryLuckyWinnerList, $superLuckyWinnerList);
 
+        /*
         printArr($winnerList);
         printArr($luckyWinnerList);
         printArr($veryLuckyWinnerList);
         printArr($superLuckyWinnerList);
-
-//        printWinner($winnerList, 1);
-//        printWinner($luckyWinnerList, 2);
-//        printWinner($veryLuckyWinnerList, 3);
-//        printWinner($superLuckyWinnerList, 4);
+        */
+        printWinner($winnerList, 1);
+        printWinner($luckyWinnerList, 2);
+        printWinner($veryLuckyWinnerList, 3);
+        printWinner($superLuckyWinnerList, 4);
 }
 
 
