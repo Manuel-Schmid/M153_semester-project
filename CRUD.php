@@ -39,9 +39,28 @@ function getAllUsers(): array {
 
 function getNextUserAutoIncrement(): int {
     global $pdo;
-    $query = $pdo->prepare("SELECT auto_increment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = user ");
+    $query = $pdo->prepare("SELECT auto_increment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'user'");
     $query->execute();
     return $query->fetchAll();
+}
+
+function getUserCount(): int {
+    global $pdo;
+    $query = $pdo->prepare("SELECT COUNT(*) FROM olmadb.user;");
+    $query->execute();
+    return $query->fetch()[0];
+}
+
+function getAllUserIDs(): array {
+    global $pdo;
+    $query = $pdo->prepare('SELECT userID FROM olmadb.user;');
+    $query->execute();
+    $res = $query->fetchAll();
+    $arr = [];
+    foreach ($res as $item) {
+        array_push($arr, $item['userID']);
+    }
+    return $arr;
 }
 
 function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $answercorrect)
