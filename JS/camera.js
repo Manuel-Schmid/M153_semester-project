@@ -15,17 +15,17 @@ catch (error){
 }
 
 function reshoot_pic() {
+    document.getElementById("btnTakePic").style.visibility="visible";
+    document.getElementById("btnReTakePic").style.visibility="hidden";
+    document.getElementById("btnSubmit").style.visibility="hidden";
     const context = document.getElementById("canvas").getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
-}
-
-function reshoot(){
-    const context = document.getElementById("canvas").getContext('2d');
-    console.log(document.getElementById("canvas"));
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function takeAPicture() {
+    document.getElementById("btnReTakePic").style.visibility="visible";
+    document.getElementById("btnTakePic").style.visibility="hidden";
+    document.getElementById("btnSubmit").style.visibility="visible";
     picture = webcam.snap();
     console.log(picture);
     sessionStorage.setItem("picture", picture);

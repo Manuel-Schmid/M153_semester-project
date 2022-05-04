@@ -14,15 +14,15 @@
 
 <div class="camera">
     <video id="webcam" autoplay="" playsinline="" width="auto" height="480" class="center"></video>
-    <canvas id="canvas" class="center"></canvas>
+    <canvas id="canvas" class="canvas center stack-top"></canvas>
     <audio id="snapSound" src="../audio/snap.wav" preload="auto"></audio>
 
     <div class="camera_controls">
         <form action="registration.php" method="post">
-            <input type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"></input>
-            <input type="button" name="reshoot" onclick="reshoot_pic()" value="Neu" class="center"></input>
+            <input id="btnTakePic" type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"></input>
+            <input id="btnReTakePic" type="button" name="reshoot" onclick="reshoot_pic()" value="Neu" class="center hidden"></input>
             <script type="text/javascript" src="../JS/camera.js"></script>
-            <input type="submit" name="next" value="Weiter" class="center">
+            <input id="btnSubmit" type="submit" name="next" value="Weiter" class="center hidden">
         </form>
     </div>
 </div>
