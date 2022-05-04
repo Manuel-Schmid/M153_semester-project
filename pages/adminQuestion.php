@@ -29,7 +29,6 @@
         <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
     </section>
 
-
 </body>
 </html>
 

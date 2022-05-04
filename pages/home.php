@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +11,6 @@
         <a id="loginButton" href="adminLogin.php"><input type="button" name="Login" value="Login"></a>
     </form>
 </header>
-
-
 
 <h1>Question?</h1>
 <br>
@@ -35,10 +31,6 @@
         <input class="answers button" id="answer4" type="button" name="Answer4" value="Answer 4">
     </a>
 </form>
-
-<?php
-
-?>
 
 </body>
 </html>
