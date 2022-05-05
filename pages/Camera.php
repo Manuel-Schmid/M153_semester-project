@@ -5,8 +5,7 @@
     <title>Olma | Home</title>
     <link rel="stylesheet" href="../styles.css">
     <script type="text/javascript" src="../JS/webcam-easy.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <img src="../assets/Logo-M153.svg" alt="" width="70">

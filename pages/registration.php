@@ -5,9 +5,7 @@ $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $stre
 $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
 
 if (isset($_POST['participate'])) {
-
     if (!empty($_POST['inFirstname'])) {
-
         $firstname = $_POST['inFirstname'];
         $allset++;
     } else {
@@ -15,7 +13,6 @@ if (isset($_POST['participate'])) {
     }
 
     if (!empty($_POST['inLastname'])) {
-
         $lastname = $_POST['inLastname'];
         $allset++;
     } else {
@@ -23,7 +20,6 @@ if (isset($_POST['participate'])) {
     }
 
     if (!empty($_POST['inDOB'])) {
-
         $dob = $_POST['inDOB'];
         $allset++;
     } else {
@@ -31,7 +27,6 @@ if (isset($_POST['participate'])) {
     }
 
     if (!empty($_POST['inEmail'])) {
-
         $email = $_POST['inEmail'];
         $allset++;
     } else {
@@ -39,7 +34,6 @@ if (isset($_POST['participate'])) {
     }
 
     if (!empty($_POST['inPhone'])) {
-
         $phone = $_POST['inPhone'];
         $allset++;
     } else {
@@ -48,7 +42,6 @@ if (isset($_POST['participate'])) {
     }
 
     if (!empty($_POST['inStreet'])) {
-
         $street = $_POST['inStreet'];
         $allset++;
     } else {
@@ -56,7 +49,6 @@ if (isset($_POST['participate'])) {
     }
 
     if (!empty($_POST['inZip'])) {
-
         $zip = $_POST['inZip'];
         $allset++;
     } else {
@@ -64,7 +56,6 @@ if (isset($_POST['participate'])) {
     }
 
     if (!empty($_POST['inCity'])) {
-
         $city = $_POST['inCity'];
         $allset++;
 

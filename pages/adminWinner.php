@@ -1,8 +1,11 @@
 <?php
     include_once('../CRUD.php');
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
     function printWinner(array $list, int $prizeID){
         foreach ($list as $element){
             $user = getUser($element);
@@ -34,7 +37,6 @@
         $veryLuckyWinnerList = array();
         $superLuckyWinnerList = array();
         $userIDs = getAllUserIDs();
-//        printArr($userIDs);
 
         // winnerList
         for($i = 0; $i<33; $i++) {
@@ -101,6 +103,7 @@
         printArr($luckyWinnerList);
         printArr($veryLuckyWinnerList);
         printArr($superLuckyWinnerList);
+<<<<<<< HEAD
         */
         printWinner($winnerList, 1);
         printWinner($luckyWinnerList, 2);
@@ -108,6 +111,14 @@
         printWinner($superLuckyWinnerList, 4);
 }
 
+=======
+
+//        printWinner($winnerList, 1);
+//        printWinner($luckyWinnerList, 2);
+//        printWinner($veryLuckyWinnerList, 3);
+//        printWinner($superLuckyWinnerList, 4);
+    }
+>>>>>>> master
 
     if(isset($_POST['pickWinner'])){
         $userCount = getUserCount();
@@ -131,7 +142,6 @@
     <form action="adminWinner.php" method="post">
         <input type="submit" name="pickWinner" value="Pick">
     </form>
-
 </section>
 
 <section class="admin_sidebar">
@@ -141,7 +151,6 @@
     <a href="adminWinner.php" class="sidebarRemoveLink"><div id="currentPage" class="sidebarItem">Winner</div></a>
     <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
 </section>
-
 
 </body>
 </html>

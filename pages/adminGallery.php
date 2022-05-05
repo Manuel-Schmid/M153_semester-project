@@ -10,7 +10,7 @@
     <br>
     <h1>Gallery</h1>
     <form action="" method="get">
-
+        <!--   dafuq even is this?     -->
     </form>
 </section>
 
@@ -21,7 +21,6 @@
     <a href="adminWinner.php" class="sidebarRemoveLink"><div class="sidebarItem">Winner</div></a>
     <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
 </section>
-
 
 </body>
 </html>
