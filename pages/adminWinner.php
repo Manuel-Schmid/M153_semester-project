@@ -2,11 +2,12 @@
     include_once('../CRUD.php');
 
 
+
     function printWinner(array $list, int $prizeID){
         foreach ($list as $element){
             $user = getUser($element);
-            $prize = getPrize($prizeID);
-            echo $user['fistName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['email'];
+            $prize = getPrizeName($prizeID);
+            echo $user['fistName'] . $user['lastName'] . "has won: " . $prize . " Email: " . $user['email'];
         }
     }
 
