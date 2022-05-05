@@ -1,11 +1,6 @@
 <?php
     include_once('../CRUD.php');
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
     function printWinner(array $list, int $prizeID){
         foreach ($list as $element){
             $user = getUser($element);
@@ -98,27 +93,16 @@
         }
         $veryLuckyWinnerList = removeOverlap($veryLuckyWinnerList, $superLuckyWinnerList);
 
-        /*
-        printArr($winnerList);
-        printArr($luckyWinnerList);
-        printArr($veryLuckyWinnerList);
-        printArr($superLuckyWinnerList);
-<<<<<<< HEAD
-        */
-        printWinner($winnerList, 1);
-        printWinner($luckyWinnerList, 2);
-        printWinner($veryLuckyWinnerList, 3);
-        printWinner($superLuckyWinnerList, 4);
-}
-
-=======
+//        printArr($winnerList);
+//        printArr($luckyWinnerList);
+//        printArr($veryLuckyWinnerList);
+//        printArr($superLuckyWinnerList);
 
 //        printWinner($winnerList, 1);
 //        printWinner($luckyWinnerList, 2);
 //        printWinner($veryLuckyWinnerList, 3);
 //        printWinner($superLuckyWinnerList, 4);
     }
->>>>>>> master
 
     if(isset($_POST['pickWinner'])){
         $userCount = getUserCount();
