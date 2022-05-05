@@ -1,7 +1,5 @@
 <?php
 include_once('confidential/db_connection.php');
-include_once ('pages/adminWinner.php');
-
 
 function getAllPrizes(): array
 {
@@ -19,18 +17,20 @@ function checkAdminPW($pw): int
     return ($query->fetch()[0] == $pw);
 }
 
-function getPrizeName($id): string {
+function getPrize($id): array {
     global $pdo;
-    $query = $pdo->prepare('SELECT name FROM prize WHERE prizeID = $id');
+    $query = $pdo->prepare('SELECT name, worth FROM prize WHERE prizeID = ?');
+    $query->bindValue(1, $id);
     $query->execute();
-    return $query->fetch()[0];
+    return $query->fetchAll()[0];
 }
 
 function getUser($id): array {
     global $pdo;
     $query = $pdo->prepare('SELECT * FROM user WHERE userID = ?');
     $query->bindValue(1,$id);
-    return $query->fetchAll();
+    $query->execute();
+    return $query->fetchAll()[0];
 }
 
 function getAllUsers(): array {
@@ -90,4 +90,3 @@ function postPicture($userID, $picture)
     $query->bindValue(2, $picture);
     $query->execute();
 }
-echo getNextUserAutoIncrement();
