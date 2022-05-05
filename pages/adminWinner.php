@@ -1,12 +1,15 @@
 <?php
     include_once('../CRUD.php');
 
-    function printWinner(array $list, int $prizeID){
-        foreach ($list as $element){
-            $user = getUser($element);
-            $prize = getPrizeName($prizeID);
-            echo $user['fistName'] . $user['lastName'] . "has won: " . $prize . " Email: " . $user['email'];
+    function printWinner(array $list, int $prizeID) {
+        foreach ($list as $userID){
+            $user = getUser($userID);
+            $prize = getPrize($prizeID);
+
+            //echo $user['firstName'];
+            echo $user['firstName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['eMail'];
         }
+
     }
 
     function printArr($arr) {
@@ -98,10 +101,10 @@
 //        printArr($veryLuckyWinnerList);
 //        printArr($superLuckyWinnerList);
 
-//        printWinner($winnerList, 1);
-//        printWinner($luckyWinnerList, 2);
-//        printWinner($veryLuckyWinnerList, 3);
-//        printWinner($superLuckyWinnerList, 4);
+        printWinner($winnerList, 1);
+        printWinner($luckyWinnerList, 2);
+        printWinner($veryLuckyWinnerList, 3);
+        printWinner($superLuckyWinnerList, 4);
     }
 
     if(isset($_POST['pickWinner'])){
