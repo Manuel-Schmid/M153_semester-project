@@ -4,10 +4,10 @@
     function printWinner(array $list, int $prizeID) {
         foreach ($list as $userID){
             $user = getUser($userID);
-            $prize = getPrizeName($prizeID);
+            $prize = getPrize($prizeID);
 
             //echo $user['firstName'];
-            echo $user['firstName'] . $user['lastName'] . "has won: " . $prize . " Email: " . $user['eMail'];
+            echo $user['firstName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['eMail'];
         }
 
     }

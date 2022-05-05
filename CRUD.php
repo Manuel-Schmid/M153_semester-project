@@ -17,12 +17,12 @@ function checkAdminPW($pw): int
     return ($query->fetch()[0] == $pw);
 }
 
-function getPrizeName($id): string {
+function getPrize($id): array {
     global $pdo;
-    $query = $pdo->prepare('SELECT name FROM prize WHERE prizeID = ?');
+    $query = $pdo->prepare('SELECT name, worth FROM prize WHERE prizeID = ?');
     $query->bindValue(1, $id);
     $query->execute();
-    return $query->fetch()[0];
+    return $query->fetchAll()[0];
 }
 
 function getUser($id): array {
