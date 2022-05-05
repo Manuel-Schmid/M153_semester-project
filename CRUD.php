@@ -1,7 +1,5 @@
 <?php
 include_once('confidential/db_connection.php');
-include_once ('pages/adminWinner.php');
-
 
 function getAllPrizes(): array
 {
@@ -90,4 +88,3 @@ function postPicture($userID, $picture)
     $query->bindValue(2, $picture);
     $query->execute();
 }
-echo getNextUserAutoIncrement();
