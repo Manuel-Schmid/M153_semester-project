@@ -1,6 +1,6 @@
 <?php
 include_once('confidential/db_connection.php');
-//include_once ('pages/adminWinner.php');
+include_once ('pages/adminWinner.php');
 
 
 function getAllPrizes(): array
