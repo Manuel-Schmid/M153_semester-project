@@ -1,5 +1,6 @@
 <?php
 include_once('confidential/db_connection.php');
+session_start();
 
 function getAllPrizes(): array
 {
@@ -17,7 +18,8 @@ function checkAdminPW($pw): int
     return ($query->fetch()[0] == $pw);
 }
 
-function getPrize($id): array {
+function getPrize($id): array
+{
     global $pdo;
     $query = $pdo->prepare('SELECT name, worth FROM prize WHERE prizeID = ?');
     $query->bindValue(1, $id);
@@ -25,36 +27,41 @@ function getPrize($id): array {
     return $query->fetchAll()[0];
 }
 
-function getUser($id): array {
+function getUser($id): array
+{
     global $pdo;
     $query = $pdo->prepare('SELECT * FROM user WHERE userID = ?');
-    $query->bindValue(1,$id);
+    $query->bindValue(1, $id);
     $query->execute();
     return $query->fetchAll()[0];
 }
 
-function getAllUsers(): array {
+function getAllUsers(): array
+{
     global $pdo;
     $query = $pdo->prepare('SELECT * FROM user;');
     $query->execute();
     return $query->fetchAll();
 }
 
-function getNextUserAutoIncrement(): int {
+function getNextUserAutoIncrement(): int
+{
     global $pdo;
     $query = $pdo->prepare("SELECT auto_increment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'user'");
     $query->execute();
     return $query->fetch()[0];
 }
 
-function getUserCount(): int {
+function getUserCount(): int
+{
     global $pdo;
     $query = $pdo->prepare("SELECT COUNT(*) FROM olmadb.user;");
     $query->execute();
     return $query->fetch()[0];
 }
 
-function getAllUserIDs(): array {
+function getAllUserIDs(): array
+{
     global $pdo;
     $query = $pdo->prepare('SELECT userID FROM olmadb.user;');
     $query->execute();
@@ -89,4 +96,19 @@ function postPicture($userID, $picture): void
     $query->bindValue(1, $userID);
     $query->bindValue(2, $picture);
     $query->execute();
+}
+
+function answerCorrect($answer): int
+{
+    global $pdo;
+    //0 == false
+    $isCorrect = 0;
+    $query = $pdo->prepare('SELECT correctAnswer FROM quiz');
+    $query->execute();
+    //!Needs fixing
+    
+    if ($query->fetchAll()[0][0] == $answer) {
+        $isCorrect = 1;
+    }
+    return $isCorrect;
 }
