@@ -19,7 +19,8 @@ function checkAdminPW($pw): int
 
 function getPrizeName($id): string {
     global $pdo;
-    $query = $pdo->prepare('SELECT name FROM prize WHERE prizeID = $id');
+    $query = $pdo->prepare('SELECT name FROM prize WHERE prizeID = ?');
+    $query->bindValue(1, $id);
     $query->execute();
     return $query->fetch()[0];
 }
@@ -28,7 +29,8 @@ function getUser($id): array {
     global $pdo;
     $query = $pdo->prepare('SELECT * FROM user WHERE userID = ?');
     $query->bindValue(1,$id);
-    return $query->fetchAll();
+    $query->execute();
+    return $query->fetchAll()[0];
 }
 
 function getAllUsers(): array {
