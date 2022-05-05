@@ -1,6 +1,6 @@
 <?php
 include_once('confidential/db_connection.php');
-include_once ('pages/adminWinner.php');
+//include_once ('pages/adminWinner.php');
 
 
 function getAllPrizes(): array
@@ -66,7 +66,7 @@ function getAllUserIDs(): array {
     return $arr;
 }
 
-function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $answercorrect)
+function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $answercorrect): void
 {
     global $pdo;
     $query = $pdo->prepare('INSERT INTO user (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postcode`, `city`, `address`, `answerCorrect`) VALUES(?,?,?,?,?,?,?,?,?)');
@@ -82,7 +82,7 @@ function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip
     $query->execute();
 }
 
-function postPicture($userID, $picture)
+function postPicture($userID, $picture): void
 {
     global $pdo;
     $query = $pdo->prepare('INSERT INTO selfie (`fk_userID`, `image`) VALUES(?,?)');
@@ -90,4 +90,3 @@ function postPicture($userID, $picture)
     $query->bindValue(2, $picture);
     $query->execute();
 }
-echo getNextUserAutoIncrement();
