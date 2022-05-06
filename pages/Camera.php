@@ -2,7 +2,7 @@
 session_start();
 include_once('../CRUD.php');
 
-$hasCorrectAnswer = $_SESSION['answer'];
+
 ?>
 
 <!DOCTYPE html>

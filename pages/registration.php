@@ -1,5 +1,7 @@
 <?php
 include_once('../CRUD.php');
+$hasCorrectAnswer = $_SESSION['answer'];
+
 $allset = 0;
 $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
 $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
