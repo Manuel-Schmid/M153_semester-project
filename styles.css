@@ -86,23 +86,23 @@ span {
     text-align: center;
 }
 
-#users {
+#users, #allWinnerAndPrizeList {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 70%;
     margin: auto;
 }
 
-#users td, #users th {
+#users td, #users th, #allWinnerAndPrizeList td, #allWinnerAndPrizeList th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#users tr:nth-child(even){background-color: #f2f2f2;}
+#users tr:nth-child(even), #allWinnerAndPrizeList tr:nth-child(even){background-color: #f2f2f2;}
 
-#users tr:hover {background-color: #ddd;}
+#users tr:hover, #allWinnerAndPrizeList tr:hover {background-color: #ddd;}
 
-#users th {
+#users th, #allWinnerAndPrizeList th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;

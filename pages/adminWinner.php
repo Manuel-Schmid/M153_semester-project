@@ -1,13 +1,18 @@
 <?php
     include_once('../CRUD.php');
+    $allWinnerAndPrizeList = array();
 
     function printWinner(array $list, int $prizeID) {
+        global $allWinnerAndPrizeList;
         foreach ($list as $userID){
-            $user = getUser($userID);
+            $user = getWinner($userID);
             $prize = getPrize($prizeID);
 
+            $winnerAndPrize = array_merge($user, $prize);
+
             //echo $user['firstName'];
-            echo $user['firstName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['eMail'];
+            //echo $user['firstName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['eMail'];
+            array_push($allWinnerAndPrizeList, $winnerAndPrize);
         }
 
     }
@@ -128,6 +133,35 @@
     <br>
     <form action="adminWinner.php" method="post">
         <input type="submit" name="pickWinner" value="Pick">
+        <br>
+
+        <table id="users" >
+            <tr>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>eMail</th>
+                <th>phoneNr</th>
+                <th>Preis</th>
+                <th>Wert</th>
+            </tr>
+            <?php
+
+             foreach ($allWinnerAndPrizeList as $person) {
+
+                 ?>
+                <tr>
+                    <td><?php echo $person[0] ?></td>
+                    <td><?php echo $person[1] ?></td>
+                    <td><?php echo $person[2] ?></td>
+                    <td><?php echo $person[3] ?></td>
+                    <td><?php echo $person[4] ?></td>
+                    <td><?php echo $person[5] ?></td>
+                </tr>
+            <?php }
+
+            ?>
+        </table>
+
     </form>
 </section>
 
