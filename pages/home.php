@@ -1,10 +1,11 @@
 <?php
 session_start();
+include_once('../CRUD.php');
 
 if(isset($_POST["answer"]))
     {
-        $_SESSION["answer"] = $_POST["answer"];
 
+        $_SESSION["answer"] = $_POST["answer"];
         header('Location: camera.php');
         exit();
     }
@@ -32,19 +33,19 @@ if(isset($_POST["answer"]))
     <table class="center">
         <tr>
             <td><label for="lblAnswer1">Answer1</label></td>
-            <td><input type="radio" id="RaAnswer1" name="answer" value="Answer1"></td>
+            <td><input type="radio" id="RaAnswer1" name="answer" value="Ja" checked></td>
         </tr>
         <tr>
             <td><label for="lblAnswer1">Answer2</label></td>
-            <td><input type="radio" id="RaAnswer2" name="answer" value="Answer2"></td>
+            <td><input type="radio" id="RaAnswer2" name="answer" value="Nein"></td>
         </tr>
         <tr>
             <td><label for="lblAnswer1">Answer3</label></td>
-            <td><input type="radio" id="RaAnswer3" name="answer" value="Answer3"></td>
+            <td><input type="radio" id="RaAnswer3" name="answer" value="Vielleicht"></td>
         </tr>
         <tr>
             <td><label for="lblAnswer1">Answer4</label></td>
-            <td><input type="radio" id="RaAnswer4" name="answer" value="Answer4"></td>
+            <td><input type="radio" id="RaAnswer4" name="answer" value="Deine Mutter"></td>
         </tr>
     <button type="submit" class="center">Submit</button>
 </form>

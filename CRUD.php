@@ -1,6 +1,6 @@
 <?php
 include_once('confidential/db_connection.php');
-session_start();
+
 
 function getAllPrizes(): array
 {
@@ -105,10 +105,10 @@ function answerCorrect($answer): int
     $isCorrect = 0;
     $query = $pdo->prepare('SELECT correctAnswer FROM quiz');
     $query->execute();
-    //!Needs fixing
-    
-    if ($query->fetchAll()[0][0] == $answer) {
+
+    if ($query->fetch() == $answer) {
         $isCorrect = 1;
     }
     return $isCorrect;
 }
+
