@@ -27,6 +27,15 @@ function getPrize($id): array
     return $query->fetchAll()[0];
 }
 
+function getWinner($id): array {
+    global $pdo;
+    $query = $pdo->prepare('SELECT firstName, lastName, eMail, phoneNr FROM user WHERE userID = ?');
+    $query->bindValue(1,$id);
+    $query->execute();
+    return $query->fetchAll()[0];
+}
+
+
 function getUser($id): array
 {
     global $pdo;
