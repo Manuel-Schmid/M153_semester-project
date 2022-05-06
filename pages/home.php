@@ -2,17 +2,18 @@
 session_start();
 include_once('../CRUD.php');
 
-if(isset($_POST["answer"]))
-    {
+if(isset($_POST["answer"])) {
+    $_SESSION['answer'] = $_POST['answer'];
+    header('Location: camera.php');
+    exit();
+}
 
-        $_SESSION["answer"] = $_POST["answer"];
-        header('Location: camera.php');
-        exit();
-    }
-
-
-
+$quiz = getQuiz();
+$answers = [$quiz['correctAnswer'],$quiz['wAnswer1'],$quiz['wAnswer2'],$quiz['wAnswer3']];
+shuffle($answers);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,25 +28,25 @@ if(isset($_POST["answer"]))
     </form>
 </header>
 
-<h1>Question?</h1>
+<h1><?php echo $quiz['question'] ?></h1>
 <br>
 <form action="home.php" method="post" id="questions">
     <table class="center">
         <tr>
-            <td><label for="lblAnswer1">Answer1</label></td>
-            <td><input type="radio" id="RaAnswer1" name="answer" value="Ja" checked></td>
+            <td><label for="lblAnswer1"><?php echo $answers[0] ?></label></td>
+            <td><input type="radio" id="RaAnswer1" name="answer" value="<?php echo ($answers[0] === $quiz['correctAnswer'] ? 1 : 0) ?>" checked></td>
         </tr>
         <tr>
-            <td><label for="lblAnswer1">Answer2</label></td>
-            <td><input type="radio" id="RaAnswer2" name="answer" value="Nein"></td>
+            <td><label for="lblAnswer1"><?php echo $answers[1] ?></label></td>
+            <td><input type="radio" id="RaAnswer2" name="answer" value="<?php echo ($answers[1] === $quiz['correctAnswer'] ? 1 : 0) ?>"></td>
         </tr>
         <tr>
-            <td><label for="lblAnswer1">Answer3</label></td>
-            <td><input type="radio" id="RaAnswer3" name="answer" value="Vielleicht"></td>
+            <td><label for="lblAnswer1"><?php echo $answers[2] ?></label></td>
+            <td><input type="radio" id="RaAnswer3" name="answer" value="<?php echo ($answers[2] === $quiz['correctAnswer'] ? 1 : 0) ?>"></td>
         </tr>
         <tr>
-            <td><label for="lblAnswer1">Answer4</label></td>
-            <td><input type="radio" id="RaAnswer4" name="answer" value="Deine Mutter"></td>
+            <td><label for="lblAnswer1"><?php echo $answers[3] ?></label></td>
+            <td><input type="radio" id="RaAnswer4" name="answer" value="<?php echo ($answers[3] === $quiz['correctAnswer'] ? 1 : 0) ?>"></td>
         </tr>
     <button type="submit" class="center">Submit</button>
 </form>

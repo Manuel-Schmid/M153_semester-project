@@ -141,9 +141,20 @@ INSERT INTO olmadb.prize( name, worth, amount)VALUES('Trostpreis Plüschmaskotch
 
 
 -- -----------------------------------------------------
--- Table olmadb.quiz
+-- Table olmadb.quiz & wrongAnswers
 -- -----------------------------------------------------
 
+INSERT INTO `olmadb`.`quiz` (`question`,`correctAnswer`) VALUES
+('Wie oft kann man 1 von 20 abziehen?',
+'1');
+INSERT INTO `olmadb`.`wrongAnswers`(fk_quizID, wAnswer1, wAnswer2, wAnswer3)VALUES((SELECT MAX(quizID) FROM quiz), 
+'20', '19', 'Kein Mal');
+
+INSERT INTO `olmadb`.`quiz` (`question`,`correctAnswer`)VALUES
+('Ein Wettrennen. Du überholst den Läufer auf Platz zwei. Auf welchem Platz bist du dann?',
+'Zweiter');
+INSERT INTO `olmadb`.`wrongAnswers`(fk_quizID, wAnswer1, wAnswer2, wAnswer3)VALUES((SELECT MAX(quizID) FROM quiz), 
+'Erster', 'Dritter', 'Letzter');
 
 -- -----------------------------------------------------
 -- Table olmadb.wrongAnswers

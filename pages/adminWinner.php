@@ -10,18 +10,16 @@
 
             $winnerAndPrize = array_merge($user, $prize);
 
-            //echo $user['firstName'];
-            //echo $user['firstName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['eMail'];
-            array_push($allWinnerAndPrizeList, $winnerAndPrize);
+            $allWinnerAndPrizeList[] = $winnerAndPrize;
         }
     }
 
-//    function printArr($arr) {
-//        echo implode('|', $arr);
-//        echo ' ||| Size: ' . sizeof($arr);
-//        echo ' ||| Duplicates: ' . (sizeof($arr) - count(array_count_values($arr)));
-//        echo '<br>';
-//    }
+    function printArr($arr) {
+        echo implode('|', $arr);
+        echo ' ||| Size: ' . sizeof($arr);
+        echo ' ||| Duplicates: ' . (sizeof($arr) - count(array_count_values($arr)));
+        echo '<br>';
+    }
 
     function removeOverlap($arr1, $arr2) {
         $arr = $arr1;
@@ -105,17 +103,16 @@
 //        printArr($veryLuckyWinnerList);
 //        printArr($superLuckyWinnerList);
 
-        printWinner($winnerList, 1);
-        printWinner($luckyWinnerList, 2);
-        printWinner($veryLuckyWinnerList, 3);
-        printWinner($superLuckyWinnerList, 4);
+        printWinner($superLuckyWinnerList, 1);
+        printWinner($veryLuckyWinnerList, 2);
+        printWinner($luckyWinnerList, 3);
+        printWinner($winnerList, 4);
     }
 
     if(isset($_POST['pickWinner'])){
         $userCount = getUserCount();
         rollWinner($userCount);
     }
-
 ?>
 
 <!DOCTYPE html>
