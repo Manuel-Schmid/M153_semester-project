@@ -1,3 +1,18 @@
+<?php
+session_start();
+include_once('../CRUD.php');
+
+if(isset($_POST["answer"]))
+    {
+
+        $_SESSION["answer"] = $_POST["answer"];
+        header('Location: camera.php');
+        exit();
+    }
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,21 +30,24 @@
 <h1>Question?</h1>
 <br>
 <form action="home.php" method="post" id="questions">
-
-    <a href="Camera.php">
-        <input class="answers" id="answer1" type="button" name="Answer1" value="Answer 1">
-    </a>
-    <a href="Camera.php">
-        <input class="answers button" id="answer2" type="button" name="Answer2" value="Answer 2">
-    </a>
-    <br>
-    <br>
-    <a href="Camera.php">
-        <input class="answers button" id="answer3" type="button" name="Answer3" value="Answer 3"
-    </a>
-    <a href="Camera.php">
-        <input class="answers button" id="answer4" type="button" name="Answer4" value="Answer 4">
-    </a>
+    <table class="center">
+        <tr>
+            <td><label for="lblAnswer1">Answer1</label></td>
+            <td><input type="radio" id="RaAnswer1" name="answer" value="Ja" checked></td>
+        </tr>
+        <tr>
+            <td><label for="lblAnswer1">Answer2</label></td>
+            <td><input type="radio" id="RaAnswer2" name="answer" value="Nein"></td>
+        </tr>
+        <tr>
+            <td><label for="lblAnswer1">Answer3</label></td>
+            <td><input type="radio" id="RaAnswer3" name="answer" value="Vielleicht"></td>
+        </tr>
+        <tr>
+            <td><label for="lblAnswer1">Answer4</label></td>
+            <td><input type="radio" id="RaAnswer4" name="answer" value="Deine Mutter"></td>
+        </tr>
+    <button type="submit" class="center">Submit</button>
 </form>
 
 </body>

@@ -65,7 +65,7 @@ if (isset($_POST['participate'])) {
 
     if ($allset == 8) {
         $nextID = getNextUserAutoIncrement();
-        postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city);
+        postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, answerCorrect($_SESSION["answer"]));
         postPicture($nextID, "<script type='text/javascript'>localStorage.getItem('picture')</script>");
         header('Location: prizesScreen.php');
         exit();

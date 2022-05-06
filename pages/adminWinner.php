@@ -14,15 +14,14 @@
             //echo $user['firstName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['eMail'];
             array_push($allWinnerAndPrizeList, $winnerAndPrize);
         }
-
     }
 
-    function printArr($arr) {
-        echo implode('|', $arr);
-        echo ' ||| Size: ' . sizeof($arr);
-        echo ' ||| Duplicates: ' . (sizeof($arr) - count(array_count_values($arr)));
-        echo '<br>';
-    }
+//    function printArr($arr) {
+//        echo implode('|', $arr);
+//        echo ' ||| Size: ' . sizeof($arr);
+//        echo ' ||| Duplicates: ' . (sizeof($arr) - count(array_count_values($arr)));
+//        echo '<br>';
+//    }
 
     function removeOverlap($arr1, $arr2) {
         $arr = $arr1;
