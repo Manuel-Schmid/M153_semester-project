@@ -27,8 +27,6 @@
                             <th>DOB</th>
                             <th>eMail</th>
                             <th>Tel.</th>
-                            <th>PLZ</th>
-                            <th>Stadt</th>
                             <th>Adresse</th>
                             <th>Antwort korrekt?</th>
                             </thead>
@@ -38,12 +36,10 @@
                                 <tr>
                                     <td><?php echo $user['firstName'] ?></td>
                                     <td><?php echo $user['lastName'] ?></td>
-                                    <td><?php echo $user['dob'] ?></td>
+                                    <td><?php echo date_format(date_create($user['dob']), 'd.m.Y'); ?></td>
                                     <td><?php echo $user['eMail'] ?></td>
                                     <td><?php echo $user['phoneNr'] ?></td>
-                                    <td><?php echo $user['postcode'] ?></td>
-                                    <td><?php echo $user['city'] ?></td>
-                                    <td><?php echo $user['address'] ?></td>
+                                    <td><?php echo $user['address'] . ', ' . $user['postcode'] . ' ' . $user['city']  ?></td>
                                     <td><?php echo $user['answerCorrect'] ? 'Ja' : 'Nein'; ?></td>
                                 </tr>
                                 <?php } ?>
@@ -58,7 +54,6 @@
 
     <section class="admin_sidebar">
         <a href="adminQuestion.php" class="sidebarRemoveLink"><div  class="sidebarItem">Questions</div></a>
-        <a href="adminGallery.php" class="sidebarRemoveLink"><div class="sidebarItem">Gallery</div></a>
         <a href="adminData.php" class="sidebarRemoveLink"><div class="sidebarItem" id="currentPage">Data</div></a>
         <a href="adminWinner.php" class="sidebarRemoveLink"><div  class="sidebarItem">Winner</div></a>
         <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
