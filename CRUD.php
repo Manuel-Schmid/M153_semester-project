@@ -27,6 +27,15 @@ function getPrize($id): array
     return $query->fetchAll()[0];
 }
 
+function getWinner($id): array {
+    global $pdo;
+    $query = $pdo->prepare('SELECT firstName, lastName, eMail, phoneNr FROM user WHERE userID = ?');
+    $query->bindValue(1,$id);
+    $query->execute();
+    return $query->fetchAll()[0];
+}
+
+
 function getUser($id): array
 {
     global $pdo;
@@ -68,7 +77,7 @@ function getAllUserIDs(): array
     $res = $query->fetchAll();
     $arr = [];
     foreach ($res as $item) {
-        array_push($arr, $item['userID']);
+        $arr[] = $item['userID'];
     }
     return $arr;
 }
@@ -98,17 +107,11 @@ function postPicture($userID, $picture): void
     $query->execute();
 }
 
-function answerCorrect($answer): int
+function getQuiz(): array
 {
     global $pdo;
-    //0 == false
-    $isCorrect = 0;
-    $query = $pdo->prepare('SELECT correctAnswer FROM quiz');
+    $query = $pdo->prepare('SELECT question, correctAnswer, wAnswer1, wAnswer2, wAnswer3 FROM olmadb.quiz JOIN wrongAnswers ON fk_quizID = quizID');
     $query->execute();
-
-    if ($query->fetch() == $answer) {
-        $isCorrect = 1;
-    }
-    return $isCorrect;
+    return $query->fetchAll()[0];
 }
 

@@ -1,22 +1,25 @@
 <?php
     include_once('../CRUD.php');
+    $allWinnerAndPrizeList = array();
 
     function printWinner(array $list, int $prizeID) {
+        global $allWinnerAndPrizeList;
         foreach ($list as $userID){
-            $user = getUser($userID);
+            $user = getWinner($userID);
             $prize = getPrize($prizeID);
 
-            //echo $user['firstName'];
-            echo $user['firstName'] . $user['lastName'] . "has won: " . $prize['name'] . " Email: " . $user['eMail'];
+            $winnerAndPrize = array_merge($user, $prize);
+
+            $allWinnerAndPrizeList[] = $winnerAndPrize;
         }
     }
 
-//    function printArr($arr) {
-//        echo implode('|', $arr);
-//        echo ' ||| Size: ' . sizeof($arr);
-//        echo ' ||| Duplicates: ' . (sizeof($arr) - count(array_count_values($arr)));
-//        echo '<br>';
-//    }
+    function printArr($arr) {
+        echo implode('|', $arr);
+        echo ' ||| Size: ' . sizeof($arr);
+        echo ' ||| Duplicates: ' . (sizeof($arr) - count(array_count_values($arr)));
+        echo '<br>';
+    }
 
     function removeOverlap($arr1, $arr2) {
         $arr = $arr1;
@@ -100,17 +103,16 @@
 //        printArr($veryLuckyWinnerList);
 //        printArr($superLuckyWinnerList);
 
-        printWinner($winnerList, 1);
-        printWinner($luckyWinnerList, 2);
-        printWinner($veryLuckyWinnerList, 3);
-        printWinner($superLuckyWinnerList, 4);
+        printWinner($superLuckyWinnerList, 1);
+        printWinner($veryLuckyWinnerList, 2);
+        printWinner($luckyWinnerList, 3);
+        printWinner($winnerList, 4);
     }
 
     if(isset($_POST['pickWinner'])){
         $userCount = getUserCount();
         rollWinner($userCount);
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -127,6 +129,35 @@
     <br>
     <form action="adminWinner.php" method="post">
         <input type="submit" name="pickWinner" value="Pick">
+        <br>
+
+        <table id="users" >
+            <tr>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>eMail</th>
+                <th>phoneNr</th>
+                <th>Preis</th>
+                <th>Wert</th>
+            </tr>
+            <?php
+
+             foreach ($allWinnerAndPrizeList as $person) {
+
+                 ?>
+                <tr>
+                    <td><?php echo $person[0] ?></td>
+                    <td><?php echo $person[1] ?></td>
+                    <td><?php echo $person[2] ?></td>
+                    <td><?php echo $person[3] ?></td>
+                    <td><?php echo $person[4] ?></td>
+                    <td><?php echo $person[5] ?></td>
+                </tr>
+            <?php }
+
+            ?>
+        </table>
+
     </form>
 </section>
 
