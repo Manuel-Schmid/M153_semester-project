@@ -164,8 +164,7 @@
 </section>
 
 <section class="admin_sidebar">
-    <a href="adminQuestion.php" class="sidebarRemoveLink"><div  class="sidebarItem">Questions</div></a>
-    <a href="adminData.php" class="sidebarRemoveLink"><div class="sidebarItem">Data</div></a>
+    <a href="adminUserData.php" class="sidebarRemoveLink"><div class="sidebarItem">Data</div></a>
     <a href="adminWinner.php" class="sidebarRemoveLink"><div id="currentPage" class="sidebarItem">Winner</div></a>
     <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
 </section>
