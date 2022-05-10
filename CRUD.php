@@ -82,7 +82,7 @@ function getAllUserIDs(): array
     return $arr;
 }
 
-function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $answercorrect): void
+function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $correctAnswer): void
 {
     global $pdo;
     $query = $pdo->prepare('INSERT INTO user (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postcode`, `city`, `address`, `answerCorrect`) VALUES(?,?,?,?,?,?,?,?,?)');
@@ -94,7 +94,7 @@ function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip
     $query->bindValue(6, $street);
     $query->bindValue(7, $zip);
     $query->bindValue(8, $city);
-    $query->bindValue(9, $answercorrect);
+    $query->bindValue(9, $correctAnswer);
     $query->execute();
 }
 
