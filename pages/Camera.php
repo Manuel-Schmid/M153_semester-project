@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once('../CRUD.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
