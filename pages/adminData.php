@@ -11,8 +11,12 @@
 </head>
 <body id="admin-view_body">
 <section class="admin_content">
+    <br>
+    <h1 class="center">Users</h1>
+    <br>
     <div class="table_users">
-        <h1 class="center">Users</h1>
+
+
             <?php $users = getAllUsers(); ?>
             <table id="users">
                 <tr>

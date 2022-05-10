@@ -89,8 +89,12 @@ span {
 #users, #allWinnerAndPrizeList {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 70%;
+    width: 80%;
     margin: auto;
+    overflow-y: scroll;
+    height: 70vh;
+    display:block;
+
 }
 
 #users td, #users th, #allWinnerAndPrizeList td, #allWinnerAndPrizeList th {
