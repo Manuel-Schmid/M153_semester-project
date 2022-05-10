@@ -2,19 +2,29 @@
 session_start();
 include_once('../CRUD.php');
 
-$hasCorrectAnswer = $_SESSION['answer'];
-$hasCorrectBool = ($hasCorrectAnswer === "1") ? 1 : 0;
-
-
-$allset = 0;
-$firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
-$firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
-$picture = null;
+//$hasCorrectAnswer = $_SESSION['answer'];
+//$hasCorrectBool = ($hasCorrectAnswer === "1") ? 1 : 0;
+//
+//
+//$allset = 0;
+//$firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
+//$firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
+//$picture = null;
 
 //set picture
+$data = $_POST;
+$picture = ($data["PictureJS"]);
+echo '<img src="'.$picture.'" alt="">';
+echo 'test';
+
 if (isset($_POST['pictureJS'])) {
-    $picture = $_POST['pictureJS'];
-    echo $picture;
+//    $picture = $_POST['pictureJS'];
+//    var_dump($picture); ;
+//
+//    $nextID = getNextUserAutoIncrement();
+//    echo $nextID;
+//    echo $picture;
+//    postPicture($nextID, $picture);
 }
 
 //if (isset($_POST['participate'])) {
@@ -85,22 +95,22 @@ if (isset($_POST['pictureJS'])) {
 //    } else {
 //        $cityError = 'Bitte Stadt eingeben';
 //    }
-$nextID = getNextUserAutoIncrement();
-echo $picture;
-postPicture($nextID, $picture);
+//$nextID = getNextUserAutoIncrement();
+//echo $picture;
+//postPicture($nextID, $picture);
 
-    if ($allset == 8) {
-        try {
-            $nextID = getNextUserAutoIncrement();
-            //postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $hasCorrectBool);
-            echo $picture;
-            //postPicture($nextID, $picture);
-        } catch (Exception $e) {
-            echo $e;
-        }
-        exit();
-    }
-}
+//    if ($allset == 8) {
+//        try {
+//            $nextID = getNextUserAutoIncrement();
+//            //postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $hasCorrectBool);
+//            echo $picture;
+//            //postPicture($nextID, $picture);
+//        } catch (Exception $e) {
+//            echo $e;
+//        }
+//        exit();
+//    }
+//}
 ?>
 
 <!DOCTYPE html>
