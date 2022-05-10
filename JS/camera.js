@@ -32,5 +32,13 @@ function takeAPicture() {
     // document.querySelector("a").href = picture;
 }
 
+function uploadPicture(){
+    let formData = new FormData();
+    formData.append("pictureJS", picture);
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', "../registration.php", true);
+    xhr.send(formData);
+}
+
 
 
