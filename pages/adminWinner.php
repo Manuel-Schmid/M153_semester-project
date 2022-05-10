@@ -2,7 +2,7 @@
     include_once('../CRUD.php');
     $allWinnerAndPrizeList = array();
 
-    function printWinner(array $list, int $prizeID) {
+    function mergeWinnerLists(array $list, int $prizeID) {
         global $allWinnerAndPrizeList;
         foreach ($list as $userID){
             $user = getWinner($userID);
@@ -98,10 +98,10 @@
         }
         $veryLuckyWinnerList = removeOverlap($veryLuckyWinnerList, $superLuckyWinnerList);
 
-        printWinner($winnerList, 4);
-        printWinner($luckyWinnerList, 3);
-        printWinner($veryLuckyWinnerList, 2);
-        printWinner($superLuckyWinnerList, 1);
+        mergeWinnerLists($superLuckyWinnerList, 1);
+        mergeWinnerLists($veryLuckyWinnerList, 2);
+        mergeWinnerLists($luckyWinnerList, 3);
+        mergeWinnerLists($winnerList, 4);
     }
 
     if(isset($_POST['pickWinner'])){
@@ -120,10 +120,10 @@
 <body id="admin-view_body">
 <section class="admin_content">
     <br>
-    <h1>Winner</h1>
+    <h1>Gewinner</h1>
     <br>
     <form action="adminWinner.php" method="post">
-        <input type="submit" name="pickWinner" value="Pick winners">
+        <input type="submit" name="pickWinner" value="Gewinner auslosen">
         <br>
         <br>
         <table id="allWinnerAndPrizeList" style=<?php
@@ -135,26 +135,25 @@
         }
         ?>>
             <tr>
-                <th>firstName</th>
-                <th>lastName</th>
-                <th>eMail</th>
-                <th>phoneNr</th>
                 <th>Preis</th>
                 <th>Wert</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>E-Mail</th>
+                <th>Tel.</th>
             </tr>
 
             <?php
 
-             foreach ($allWinnerAndPrizeList as $person) {
-
+             foreach ($allWinnerAndPrizeList as $winner) {
                  ?>
                 <tr>
-                    <td><?php echo $person[0] ?></td>
-                    <td><?php echo $person[1] ?></td>
-                    <td><?php echo $person[2] ?></td>
-                    <td><?php echo $person[3] ?></td>
-                    <td><?php echo $person[4] ?></td>
-                    <td><?php echo $person[5] ?></td>
+                    <td><?php echo $winner[4] ?></td>
+                    <td><?php echo $winner[5] ?></td>
+                    <td><?php echo $winner[0] ?></td>
+                    <td><?php echo $winner[1] ?></td>
+                    <td><?php echo $winner[2] ?></td>
+                    <td><?php echo $winner[3] ?></td>
                 </tr>
             <?php }
 
