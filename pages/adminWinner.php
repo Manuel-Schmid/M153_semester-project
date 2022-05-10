@@ -2,7 +2,7 @@
     include_once('../CRUD.php');
     $allWinnerAndPrizeList = array();
 
-    function printWinner(array $list, int $prizeID) {
+    function mergeWinnerLists(array $list, int $prizeID) {
         global $allWinnerAndPrizeList;
         foreach ($list as $userID){
             $user = getWinner($userID);
@@ -98,15 +98,10 @@
         }
         $veryLuckyWinnerList = removeOverlap($veryLuckyWinnerList, $superLuckyWinnerList);
 
-//        printArr($winnerList);
-//        printArr($luckyWinnerList);
-//        printArr($veryLuckyWinnerList);
-//        printArr($superLuckyWinnerList);
-
-        printWinner($superLuckyWinnerList, 1);
-        printWinner($veryLuckyWinnerList, 2);
-        printWinner($luckyWinnerList, 3);
-        printWinner($winnerList, 4);
+        mergeWinnerLists($superLuckyWinnerList, 1);
+        mergeWinnerLists($veryLuckyWinnerList, 2);
+        mergeWinnerLists($luckyWinnerList, 3);
+        mergeWinnerLists($winnerList, 4);
     }
 
     if(isset($_POST['pickWinner'])){
@@ -125,33 +120,40 @@
 <body id="admin-view_body">
 <section class="admin_content">
     <br>
-    <h1>Winner</h1>
+    <h1>Gewinner</h1>
     <br>
     <form action="adminWinner.php" method="post">
-        <input type="submit" name="pickWinner" value="Pick">
+        <input type="submit" name="pickWinner" value="Gewinner auslosen">
         <br>
-
-        <table id="users" >
+        <br>
+        <table id="allWinnerAndPrizeList" style=<?php
+        if(isset($_POST['pickWinner'])){
+            echo '""';
+        }
+        else{
+            echo '"display:none"';
+        }
+        ?>>
             <tr>
-                <th>firstName</th>
-                <th>lastName</th>
-                <th>eMail</th>
-                <th>phoneNr</th>
                 <th>Preis</th>
                 <th>Wert</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>E-Mail</th>
+                <th>Tel.</th>
             </tr>
+
             <?php
 
-             foreach ($allWinnerAndPrizeList as $person) {
-
+             foreach ($allWinnerAndPrizeList as $winner) {
                  ?>
                 <tr>
-                    <td><?php echo $person[0] ?></td>
-                    <td><?php echo $person[1] ?></td>
-                    <td><?php echo $person[2] ?></td>
-                    <td><?php echo $person[3] ?></td>
-                    <td><?php echo $person[4] ?></td>
-                    <td><?php echo $person[5] ?></td>
+                    <td><?php echo $winner[4] ?></td>
+                    <td><?php echo $winner[5] ?></td>
+                    <td><?php echo $winner[0] ?></td>
+                    <td><?php echo $winner[1] ?></td>
+                    <td><?php echo $winner[2] ?></td>
+                    <td><?php echo $winner[3] ?></td>
                 </tr>
             <?php }
 
@@ -163,7 +165,6 @@
 
 <section class="admin_sidebar">
     <a href="adminQuestion.php" class="sidebarRemoveLink"><div  class="sidebarItem">Questions</div></a>
-    <a href="adminGallery.php" class="sidebarRemoveLink"><div class="sidebarItem">Gallery</div></a>
     <a href="adminData.php" class="sidebarRemoveLink"><div class="sidebarItem">Data</div></a>
     <a href="adminWinner.php" class="sidebarRemoveLink"><div id="currentPage" class="sidebarItem">Winner</div></a>
     <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
