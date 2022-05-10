@@ -7,6 +7,13 @@ $hasCorrectAnswer = $_SESSION['answer'];
 $allset = 0;
 $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
 $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
+$picture = null;
+
+//set picture
+if(isset($_POST['pictureJS'])){
+        $picture = $_POST['pictureJS'];
+        echo $picture;
+    }
 
 if (isset($_POST['participate'])) {
     if (!empty($_POST['inFirstname'])) {
@@ -68,10 +75,13 @@ if (isset($_POST['participate'])) {
     }
 
     if ($allset == 8) {
-        $nextID = getNextUserAutoIncrement();
-        postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, answerCorrect($_SESSION["answer"]));
-        postPicture($nextID, "<script type='text/javascript'>localStorage.getItem('picture')</script>");
-        header('Location: prizesScreen.php');
+        try {
+            $nextID = getNextUserAutoIncrement();
+            postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, answerCorrect($_SESSION["answer"]));
+            postPicture($nextID, $picture);
+        } catch (Exception $e) {
+            echo $e;
+        }
         exit();
     }
 }
