@@ -22,13 +22,17 @@ include_once('../CRUD.php');
     <audio id="snapSound" src="../audio/snap.wav" preload="auto"></audio>
 
     <div class="camera_controls">
-        <form action="registration.php" method="post">
+        <form action="registration.php" method="post" autocomplete="on">
             <input id="btnTakePic" type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"></input>
             <input id="btnReTakePic" type="button" name="reshoot" onclick="reshoot_pic()" value="Neu" class="center hidden"></input>
+            <input id="picture" type="hidden" name="PictureJS">
             <script type="text/javascript" src="../JS/camera.js"></script>
-            <input id="btnSubmit" type="submit" name="next" value="Weiter" class="center hidden">
+            <button type="button" onclick="setPicture()" id="btnSubmit" class="center hidden">Weiter</button>
+            <input id="submitPicture" type="submit" value="Submit">
         </form>
     </div>
+
+    <img id="testImg" src="" alt="">
 </div>
 
 </body>

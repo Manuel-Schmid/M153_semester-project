@@ -144,7 +144,6 @@
             </tr>
 
             <?php
-
              foreach ($allWinnerAndPrizeList as $winner) {
                  ?>
                 <tr>
@@ -155,9 +154,7 @@
                     <td><?php echo $winner[2] ?></td>
                     <td><?php echo $winner[3] ?></td>
                 </tr>
-            <?php }
-
-            ?>
+            <?php } ?>
         </table>
 
     </form>

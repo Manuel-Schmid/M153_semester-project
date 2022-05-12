@@ -27,17 +27,24 @@ function takeAPicture() {
     document.getElementById("btnTakePic").style.visibility="hidden";
     document.getElementById("btnSubmit").style.visibility="visible";
     picture = webcam.snap();
-    console.log(picture);
-    sessionStorage.setItem("picture", picture);
+    // console.log(picture);
+    // sessionStorage.setItem("picture", picture);
     // document.querySelector("a").href = picture;
 }
 
-function uploadPicture(){
-    let formData = new FormData();
-    formData.append("pictureJS", picture);
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', "../registration.php", true);
-    xhr.send(formData);
+function setPicture(){
+    console.log(picture)
+    document.getElementById('picture').value = picture;
+    // document.getElementById('testImg').src = picture;
+    // document.getElementById('submitPicture').click();
+
+    // let formData = new FormData();
+    // formData.append("pictureJS", picture);
+    // let xhr = new XMLHttpRequest();
+    // xhr.open('POST', "../registration.php", true);
+    // xhr.send(formData);
+
+    // window.location.href = 'registration.php';
 }
 
 
