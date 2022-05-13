@@ -187,6 +187,10 @@ span {
     visibility: hidden;
 }
 
+.veryHidden {
+    display: none;
+}
+
 .error {
     color: red;
 }

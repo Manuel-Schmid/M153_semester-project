@@ -98,7 +98,7 @@ function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip
     $query->execute();
 }
 
-function postPicture($userID, $picture): void
+function postPicture($userID, $picture)
 {
     global $pdo;
     $query = $pdo->prepare('INSERT INTO selfie (`fk_userID`, `image`) VALUES(?,?)');
