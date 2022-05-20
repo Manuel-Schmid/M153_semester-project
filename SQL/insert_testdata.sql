@@ -131,7 +131,7 @@ VALUES
 INSERT INTO olmadb.prize( name, worth, amount)VALUES('Auto', 20000, 1);
 INSERT INTO olmadb.prize( name, worth, amount)VALUES('Kreuzfahrt', 8000, 2);
 INSERT INTO olmadb.prize( name, worth, amount)VALUES('Einkaufsgutschein', 250, 10);
-INSERT INTO olmadb.prize( name, worth, amount)VALUES('Trostpreis Plüschmaskotchen', 15, 20);
+INSERT INTO olmadb.prize( name, worth, amount)VALUES('Trostpreis Plüschmaskottchen', 15, 20);
 
 
 -- -----------------------------------------------------
