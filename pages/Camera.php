@@ -45,6 +45,7 @@ if (isset($_POST['camera-form'], $_POST["PictureJS"])) {
 
 }
 else if(isset($_POST['participate'])){
+    $pictureB64 = $_POST['PicturePHP'];
     $activeTab = 'registration';
 }
 //else {
@@ -233,6 +234,7 @@ if ($activeTab === 'registration') {
                 <td><?php echo $streetError; ?></td>
             </tr>
         </table>
+        <input id="picture" type="hidden" name="PicturePHP" value="<?php echo $pictureB64 ?>">
         <input type="submit" name="participate" value="Teilnehmen" class="center submitbutton">
     </form>
 </section>

@@ -48,7 +48,7 @@ function getUser($id): array
 function getAllUsers(): array
 {
     global $pdo;
-    $query = $pdo->prepare('SELECT * FROM user;');
+    $query = $pdo->prepare('SELECT `userID`,`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postCode`, `city`, `street`, `answerCorrect` FROM user;');
     $query->execute();
     return $query->fetchAll();
 }
