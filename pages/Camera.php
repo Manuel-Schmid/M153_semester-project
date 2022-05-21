@@ -65,11 +65,6 @@ if (isset($_POST['camera-form'])) {
     $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
     $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
 
-//        postPicture($nextID, $pictureBlob);
-//        postPicture(1, 'hello');
-//        echo $pictureBlob;
-//        echo 'posted';
-
     if (isset($_POST['participate'])) {
 
         if (!empty($_POST['inFirstname'])) {
@@ -146,30 +141,17 @@ if (isset($_POST['camera-form'])) {
             $cityError = 'Bitte Stadt eingeben';
         }
       
-      
-      
-//     $nextID = getNextUserAutoIncrement();
-//     echo $picture;
-//     postPicture($nextID, $picture);
-
-//         if ($allset == 8) {
-//             try {
-//                 $nextID = getNextUserAutoIncrement();
+         if ($allset == 8) {
+             try {
 //                 postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $hasCorrectBool);
-//                 echo $picture;
-//                 postPicture($nextID, $picture);
-//             } catch (Exception $e) {
-//                 echo $e;
-//             }
-//             exit();
-//         }
-      
-      
-      
-      //    postUserData('max', 'pain', '2008-12-30', 'max.pain@gmx.com', '9476285837', '9283', 'Amsterdamn', 'Lethalstreet 7', 1, $pictureB64);
+//                 postUserData('max', 'pain', '2008-12-30', 'max.pain@gmx.com', '9476285837', '9283', 'Amsterdamn', 'Lethalstreet 7', 1, $pictureB64);
+             } catch (Exception $e) {
+                 echo $e;
+             }
+             exit();
+         }
     }
  }
-
 ?>
 
 <!DOCTYPE html>
