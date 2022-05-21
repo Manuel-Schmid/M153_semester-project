@@ -8,12 +8,12 @@ $pictureB64 = '';
 $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
 $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
 
-if (isset($_POST['camera-form'])) {
+if (isset($_POST['camera-form'], $_POST["PictureJS"])) {
     try {
         $activeTab = 'registration';
 
-        $data = $_POST;
-        echo '<p style="display: none">' . $data["PictureJS"] . '</p>';
+//        $data = $_POST;
+//        echo '<p style="display: none">' . $data["PictureJS"] . '</p>';
 
         $pictureB64 = ($_POST["PictureJS"]);
 //        $pictureB64 = base64_decode(substr($pictureB64, 22));
@@ -35,14 +35,17 @@ if (isset($_POST['camera-form'])) {
 //        $nextID = getNextUserAutoIncrement();
 //        postPicture($nextID, $pictureB64);
 
-    //    var_dump($pictureBlob);
-    //    var_dump(base64_encode($pictureBlob));
+        //    var_dump($pictureBlob);
+        //    var_dump(base64_encode($pictureBlob));
 //        echo 'halso';
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         echo 'ErrorMSG: ' . $e->getMessage();
     }
 
+}
+else if(isset($_POST['participate'])){
+    $activeTab = 'registration';
 }
 //else {
 //    $activeTab = 'camera';
@@ -55,15 +58,11 @@ if (isset($_POST['camera-form'])) {
 //} else
 
 
-
-    if ($activeTab === 'registration') {
+if ($activeTab === 'registration') {
     $hasCorrectAnswer = $_SESSION['answer'];
     $hasCorrectBool = ($hasCorrectAnswer === "1") ? 1 : 0;
 
     $allset = 0;
-      
-    $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
-    $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
 
     if (isset($_POST['participate'])) {
 
@@ -83,11 +82,10 @@ if (isset($_POST['camera-form'])) {
 
         if (!empty($_POST['inDOB'])) {
             $dobDate = strtotime($_POST['inDOB']);
-            if(mktime(0,0,0,date('m',$dobDate), date('d',$dobDate),date('y',$dobDate))< mktime(0, 0, 0, date('m'), date('j'), ( date('Y') - 18 ))){
+            if (mktime(0, 0, 0, date('m', $dobDate), date('d', $dobDate), date('y', $dobDate)) < mktime(0, 0, 0, date('m'), date('j'), (date('Y') - 18))) {
                 $dob = $_POST['inDOB'];
                 $allset++;
-            }
-            else{
+            } else {
                 $dobError = "Keine Teilnehmer unter 18";
             }
 
@@ -134,24 +132,25 @@ if (isset($_POST['camera-form'])) {
         }
 
         if (!empty($_POST['inCity'])) {
-            $city = $_POST['inCity'];
-            $allset++;
-
+                $city = $_POST['inCity'];
+                $allset++;
         } else {
             $cityError = 'Bitte Stadt eingeben';
         }
-      
-         if ($allset == 8) {
-             try {
-//                 postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $hasCorrectBool);
+
+        if ($allset == 8) {
+            try {
+                postUserData($firstname, $lastname, $dob, $email, $phone, $zip, $city, $street, $hasCorrectBool, $pictureB64);
 //                 postUserData('max', 'pain', '2008-12-30', 'max.pain@gmx.com', '9476285837', '9283', 'Amsterdamn', 'Lethalstreet 7', 1, $pictureB64);
-             } catch (Exception $e) {
-                 echo $e;
-             }
-             exit();
-         }
+                header('Location: noteOfThanks.php');
+                //exit();
+            } catch (Exception $e) {
+                echo $e;
+            }
+
+        }
     }
- }
+}
 ?>
 
 <!DOCTYPE html>
@@ -166,19 +165,20 @@ if (isset($_POST['camera-form'])) {
 <body>
 <img src="../assets/Logo-M153.svg" alt="" width="70">
 
-<section class="camera-section <?php  if($activeTab !== 'camera') echo 'veryHidden'; ?>">
+<section class="camera-section <?php if ($activeTab !== 'camera') echo 'veryHidden'; ?>">
     <h1 class="center">Foto aufnehmen</h1>
     <div class="camera">
         <video id="webcam" autoplay="" playsinline="" width="auto" height="480" class="center"></video>
         <canvas id="canvas" class="canvas center stack-top"></canvas>
         <audio id="snapSound" src="../audio/snap.wav" preload="auto"></audio>
 
-        <?php  if($activeTab === 'camera') echo '<script type="text/javascript" src="../JS/camera.js"></script>'; ?>
+        <?php if ($activeTab === 'camera') echo '<script type="text/javascript" src="../JS/camera.js"></script>'; ?>
 
         <div class="camera_controls">
             <form action="Camera.php" method="post">
                 <input id="btnTakePic" type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"/>
-                <input id="btnReTakePic" type="button" name="reshoot" onclick="reshoot_pic()" value="Neu" class="center hidden"/>
+                <input id="btnReTakePic" type="button" name="reshoot" onclick="reshoot_pic()" value="Neu"
+                       class="center hidden"/>
                 <input id="picture" type="hidden" name="PictureJS">
 
 
@@ -188,9 +188,9 @@ if (isset($_POST['camera-form'])) {
     </div>
 </section>
 
-<section class="registration-section <?php  if($activeTab !== 'registration') echo 'veryHidden'; ?>">
+<section class="registration-section <?php if ($activeTab !== 'registration') echo 'veryHidden'; ?>">
     <h1 class="center">Registration</h1>
-    <form action="registration.php" method="post" id="questions">
+    <form action="camera.php" method="post" id="questions">
         <table class="center">
             <tr>
                 <td><label for="lblFirstName">Vorname:</label></td>
