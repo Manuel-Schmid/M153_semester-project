@@ -71,7 +71,7 @@
         }
 
         // winnerList
-        echo $tier4WinnerCount;
+//        echo $tier4WinnerCount;
         for($i = 0; $i<$tier4WinnerCount; $i++) {
 
             $key = -1;
