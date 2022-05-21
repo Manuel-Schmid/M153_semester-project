@@ -39,18 +39,46 @@
     }
 
     function rollWinner(int $userCount){
+
         $tier4WinnerList = array();
         $tier3WinnerList = array();
         $tier2WinnerList = array();
         $tier1WinnerList = array();
+
         $userIDs = getAllUserIDs();
 
+        $tier4WinnerCount = 33;
+        $tier3WinnerCount = 13;
+        $tier2WinnerCount = 3;
+        $tier1WinnerCount = 1;
+
+
+        $winnerCount = count($userIDs, COUNT_NORMAL);
+        if ($winnerCount<1){
+        }
+        elseif ($winnerCount<3){
+            $tier4WinnerCount = $winnerCount;
+            $tier3WinnerCount = $winnerCount;
+            $tier2WinnerCount = $winnerCount;
+        }
+        elseif ($winnerCount<13){
+            $tier4WinnerCount = $winnerCount;
+            $tier3WinnerCount = $winnerCount;
+
+        }
+        elseif($winnerCount<33){
+            $tier4WinnerCount = $winnerCount;
+        }
+
         // winnerList
-        for($i = 0; $i<33; $i++) {
+        echo $tier4WinnerCount;
+        for($i = 0; $i<$tier4WinnerCount; $i++) {
+
             $key = -1;
             while($key == -1) {
                 $winnerIndex = rand(0, sizeof($userIDs) - 1);
                 $key = array_search($userIDs[$winnerIndex], $tier4WinnerList);
+
                 if ($key === false) {
                     $tier4WinnerList[$i] = $userIDs[$winnerIndex];
                 } else {
@@ -60,7 +88,7 @@
         }
 
         // tier3WinnerList
-        for($i = 0; $i<13; $i++) {
+        for($i = 0; $i<$tier3WinnerCount; $i++) {
             $key = -1;
             while($key == -1) {
                 $luckyWinner = rand(0, sizeof($tier4WinnerList) - 1);
@@ -72,10 +100,10 @@
                 }
             }
         }
-        $winnerList = removeOverlap($tier4WinnerList, $tier3WinnerList);
+        $tier4WinnerList = removeOverlap($tier4WinnerList, $tier3WinnerList);
 
         // tier2WinnerList
-        for($i = 0; $i<3; $i++){
+        for($i = 0; $i<$tier2WinnerCount; $i++){
             $key = -1;
             while($key == -1){
                 $veryLuckyWinner = rand(0, sizeof($tier3WinnerList) - 1);
@@ -91,7 +119,7 @@
         $tier3WinnerList = removeOverlap($tier3WinnerList, $tier2WinnerList);
 
         // tier1WinnerList
-        for($i = 0; $i<1; $i++){
+        for($i = 0; $i<$tier1WinnerCount; $i++){
             $key = -1;
             while($key == -1){
                 $superLuckyWinner = rand(0, sizeof($tier2WinnerList) - 1);
@@ -112,9 +140,13 @@
     }
 
     if(isset($_POST['pickWinner'])){
+
         $userCount = getUserCount();
+
         rollWinner($userCount);
+
     }
+
 ?>
 
 <!DOCTYPE html>
