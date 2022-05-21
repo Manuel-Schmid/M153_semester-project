@@ -56,7 +56,7 @@ body {
     background-color: gray;
 }
 
-/* specific for adminData.php file */
+/* specific for adminUserData.php file */
 .form {
     top: 50%;
     width: 50%;
@@ -85,7 +85,7 @@ span {
     text-align: center;
 }
 
-#users, #allWinnerAndPrizeList {
+#users, #allWinnerAndPrizeList, #prizeList{
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: max-content;
@@ -95,16 +95,16 @@ span {
     display:block;
 }
 
-#users td, #users th, #allWinnerAndPrizeList td, #allWinnerAndPrizeList th {
+#users td, #users th, #allWinnerAndPrizeList td, #allWinnerAndPrizeList th, #prizeList td, #prizeList th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#users tr:nth-child(even), #allWinnerAndPrizeList tr:nth-child(even){background-color: #f2f2f2;}
+#users tr:nth-child(even), #allWinnerAndPrizeList tr:nth-child(even), #prizeList tr:nth-child(even){background-color: #f2f2f2;}
 
 #users tr:hover, #allWinnerAndPrizeList tr:hover {background-color: #ddd;}
 
-#users th, #allWinnerAndPrizeList th {
+#users th, #allWinnerAndPrizeList th, #prizeList th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -189,6 +189,10 @@ span {
 
 .veryHidden {
     display: none;
+}
+
+.containerThanks{
+ margin-top: 1vh;
 }
 
 .error {

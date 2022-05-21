@@ -25,11 +25,13 @@ shuffle($answers);
 <header>
     <form action="home.php" method="post">
         <a id="loginButton" href="adminLogin.php"><input type="button" name="Login" value="Login"></a>
+        <a id="prizeScreenButton" href="prizesScreen.php"><input type="button" name="Login" value="Preisliste"></a>
     </form>
 </header>
 
 <h1><?php echo $quiz['question'] ?></h1>
 <br>
+
 <form action="home.php" method="post" id="questions">
     <table class="center">
         <tr>
