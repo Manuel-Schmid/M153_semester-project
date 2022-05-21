@@ -3,26 +3,56 @@ session_start();
 include_once('../CRUD.php');
 
 $activeTab = 'camera';
-$pictureBlob = '';
+$pictureB64 = '';
 
 if (isset($_POST['camera-form'])) {
-    $activeTab = 'registration';
+    try {
+        $activeTab = 'registration';
 
-    $data = $_POST;
-    var_dump($_POST);
-    echo '<p style="display: none">' . $data["PictureJS"] . '</p>';
+        $data = $_POST;
+        echo '<p style="display: none">' . $data["PictureJS"] . '</p>';
 
-    $pictureB64 = ($_POST["PictureJS"]);
-    var_dump($pictureB64);
-    echo '<img src="'.$pictureB64.'" alt="">';
+        $pictureB64 = ($_POST["PictureJS"]);
+//        $pictureB64 = base64_decode(substr($pictureB64, 22));
 
-    $pictureBlob = base64_decode($pictureB64);
+//        echo $pictureB64;
+//        echo base64_encode(base64_decode($pictureB64));
+
+//        var_dump($pictureB64);
+//        echo '<img src="'.$pictureB64.'" alt="">';
+
+//        $pictureBlob = base64_decode(substr($pictureB64, 22)); // data:image/png;base64,
+//        $pictureBlob = base64_decode($pictureB64);
+//        echo '<br><br><br>';
+//        $pictureBlob = addslashes($pictureBlob);
+//        echo $pictureBlob;
+
+//        var_dump(file_get_contents($pictureBlob));
+
+//        $nextID = getNextUserAutoIncrement();
+//        postPicture($nextID, $pictureB64);
+
+    //    var_dump($pictureBlob);
+    //    var_dump(base64_encode($pictureBlob));
+//        echo 'halso';
+
+    } catch(Exception $e) {
+        echo 'ErrorMSG: ' . $e->getMessage();
+    }
+
 }
+//else {
+//    $activeTab = 'camera';
+//}
 
-if ($activeTab === 'camera') {
+
+//if ($activeTab === 'camera') {
+//
+//
+//} else
 
 
-} else if ($activeTab === 'registration') {
+    if ($activeTab === 'registration') {
     // $hasCorrectAnswer = $_SESSION['answer'];
     // $hasCorrectBool = ($hasCorrectAnswer === "1") ? 1 : 0;
     //
@@ -35,10 +65,10 @@ if ($activeTab === 'camera') {
     //    $picture = $_POST['pictureJS'];
     //    var_dump($picture); ;
 
-        $nextID = getNextUserAutoIncrement();
-        echo $nextID;
-        postPicture($nextID, $pictureBlob);
-        echo 'posted';
+//        postPicture($nextID, $pictureBlob);
+//        postPicture(1, 'hello');
+//        echo $pictureBlob;
+//        echo 'posted';
 
     //if (isset($_POST['participate'])) {
     //
@@ -124,6 +154,8 @@ if ($activeTab === 'camera') {
     //        exit();
     //    }
     //}
+
+//    postUserData('max', 'pain', '2008-12-30', 'max.pain@gmx.com', '9476285837', '9283', 'Amsterdamn', 'Lethalstreet 7', 1, $pictureB64);
  }
 
 ?>
@@ -147,13 +179,14 @@ if ($activeTab === 'camera') {
         <canvas id="canvas" class="canvas center stack-top"></canvas>
         <audio id="snapSound" src="../audio/snap.wav" preload="auto"></audio>
 
+        <?php  if($activeTab === 'camera') echo '<script type="text/javascript" src="../JS/camera.js"></script>'; ?>
+
         <div class="camera_controls">
-            <form action="Camera.php" method="post" autocomplete="on">
+            <form action="Camera.php" method="post">
                 <input id="btnTakePic" type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"/>
                 <input id="btnReTakePic" type="button" name="reshoot" onclick="reshoot_pic()" value="Neu" class="center hidden"/>
                 <input id="picture" type="hidden" name="PictureJS">
 
-                <script type="text/javascript" src="../JS/camera.js"></script>
 
                 <input type="submit" id="btnSubmit" name="camera-form" class="center hidden" value="Weiter">
             </form>
