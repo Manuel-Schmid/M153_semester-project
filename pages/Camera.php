@@ -5,6 +5,9 @@ include_once('../CRUD.php');
 $activeTab = 'camera';
 $pictureB64 = '';
 
+$firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
+$firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
+
 if (isset($_POST['camera-form'])) {
     try {
         $activeTab = 'registration';
@@ -52,110 +55,119 @@ if (isset($_POST['camera-form'])) {
 //} else
 
 
+
     if ($activeTab === 'registration') {
-    // $hasCorrectAnswer = $_SESSION['answer'];
-    // $hasCorrectBool = ($hasCorrectAnswer === "1") ? 1 : 0;
-    //
-    //
-    //$allset = 0;
+    $hasCorrectAnswer = $_SESSION['answer'];
+    $hasCorrectBool = ($hasCorrectAnswer === "1") ? 1 : 0;
+
+    $allset = 0;
+      
     $firstname = $lastname = $dob = $email = $phone = $street = $zip = $city = '';
     $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $streetError = $zipError = $cityError = '';
-    //$picture = null;
-
-    //    $picture = $_POST['pictureJS'];
-    //    var_dump($picture); ;
 
 //        postPicture($nextID, $pictureBlob);
 //        postPicture(1, 'hello');
 //        echo $pictureBlob;
 //        echo 'posted';
 
-    //if (isset($_POST['participate'])) {
-    //
-    //    if (!empty($_POST['inFirstname'])) {
-    //        $firstname = $_POST['inFirstname'];
-    //        $allset++;
-    //    } else {
-    //        $firstnameError = 'Bitte Vorname eingeben';
-    //    }
-    //
-    //    if (!empty($_POST['inLastname'])) {
-    //        $lastname = $_POST['inLastname'];
-    //        $allset++;
-    //    } else {
-    //        $lastNameError = 'Bitte Nachnamen eingeben';
-    //    }
-    //
-    //    if (!empty($_POST['inDOB'])) {
-    //        $dob = $_POST['inDOB'];
-    //        $allset++;
-    //    } else {
-    //        $dobError = 'Bitte Geburtsdatum eingeben';
-    //    }
-    //
-    //    if (!empty($_POST['inEmail'])) {
-    //        $email = $_POST['inEmail'];
-    //        $allset++;
-    //    } else {
-    //
-    //        $emailError = 'Bitte E-Mail eingeben';
-    //    }
-    //
-    //    if (!empty($_POST['inPhone'])) {
-    ////        if (preg_match('/^(\+41)?\s?(\d{2})\s?(\d{3})\s?(\d{2})\s?(\d{2})$/', $_POST['inPhone'])) {
-    //            $phone = $_POST['inPhone'];
-    //            $allset++;
-    ////        } else {
-    ////            $phoneError = 'Ungültige Tel.Nr.';
-    ////        }
-    //    } else {
-    //        $phoneError = 'Bitte Tel.Nr. eingeben';
-    //
-    //    }
-    //
-    //    if (!empty($_POST['inStreet'])) {
-    //        $street = $_POST['inStreet'];
-    //        $allset++;
-    //    } else {
-    //        $streetError = 'Bitte Strasse eingeben';
-    //    }
-    //
-    //    if (!empty($_POST['inZip'])) {
-    //        if (preg_match('/^\d{4}$/', $_POST['inZip'])) {
-    //            $zip = $_POST['inZip'];
-    //            $allset++;
-    //        } else {
-    //            $zipError = 'PLZ ungültig';
-    //        }
-    //    } else {
-    //        $zipError = 'Bitte PLZ eingeben';
-    //    }
-    //
-    //    if (!empty($_POST['inCity'])) {
-    //        $city = $_POST['inCity'];
-    //        $allset++;
-    //
-    //    } else {
-    //        $cityError = 'Bitte Stadt eingeben';
-    //    }
-    //$nextID = getNextUserAutoIncrement();
-    //echo $picture;
-    //postPicture($nextID, $picture);
+    if (isset($_POST['participate'])) {
 
-    //    if ($allset == 8) {
-    //        try {
-    //            $nextID = getNextUserAutoIncrement();
-    //            //postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $hasCorrectBool);
-    //            echo $picture;
-    //            //postPicture($nextID, $picture);
-    //        } catch (Exception $e) {
-    //            echo $e;
-    //        }
-    //        exit();
-    //    }
-    //}
+        if (!empty($_POST['inFirstname'])) {
+            $firstname = $_POST['inFirstname'];
+            $allset++;
+        } else {
+            $firstnameError = 'Bitte Vorname eingeben';
+        }
 
-//    postUserData('max', 'pain', '2008-12-30', 'max.pain@gmx.com', '9476285837', '9283', 'Amsterdamn', 'Lethalstreet 7', 1, $pictureB64);
+        if (!empty($_POST['inLastname'])) {
+            $lastname = $_POST['inLastname'];
+            $allset++;
+        } else {
+            $lastNameError = 'Bitte Nachnamen eingeben';
+        }
+
+        if (!empty($_POST['inDOB'])) {
+            $dobDate = strtotime($_POST['inDOB']);
+            if(mktime(0,0,0,date('m',$dobDate), date('d',$dobDate),date('y',$dobDate))< mktime(0, 0, 0, date('m'), date('j'), ( date('Y') - 18 ))){
+                $dob = $_POST['inDOB'];
+                $allset++;
+            }
+            else{
+                $dobError = "Keine Teilnehmer unter 18";
+            }
+
+        } else {
+            $dobError = 'Bitte Geburtsdatum eingeben';
+        }
+
+        if (!empty($_POST['inEmail'])) {
+            $email = $_POST['inEmail'];
+            $allset++;
+        } else {
+
+            $emailError = 'Bitte E-Mail eingeben';
+        }
+
+        if (!empty($_POST['inPhone'])) {
+            if (preg_match('/^(\d{3})\s?(\d{3})\s?(\d{2})\s?(\d{2})$/', $_POST['inPhone'])) {
+                $phone = $_POST['inPhone'];
+                $allset++;
+            } else {
+                $phoneError = 'Ungültige Tel.Nr. (079 123 45 67)';
+            }
+        } else {
+            $phoneError = 'Bitte Tel.Nr. eingeben';
+
+        }
+
+        if (!empty($_POST['inStreet'])) {
+            $street = $_POST['inStreet'];
+            $allset++;
+        } else {
+            $streetError = 'Bitte Strasse eingeben';
+        }
+
+        if (!empty($_POST['inZip'])) {
+            if (preg_match('/^\d{4}$/', $_POST['inZip'])) {
+                $zip = $_POST['inZip'];
+                $allset++;
+            } else {
+                $zipError = 'PLZ ungültig';
+            }
+        } else {
+            $zipError = 'Bitte PLZ eingeben';
+        }
+
+        if (!empty($_POST['inCity'])) {
+            $city = $_POST['inCity'];
+            $allset++;
+
+        } else {
+            $cityError = 'Bitte Stadt eingeben';
+        }
+      
+      
+      
+//     $nextID = getNextUserAutoIncrement();
+//     echo $picture;
+//     postPicture($nextID, $picture);
+
+//         if ($allset == 8) {
+//             try {
+//                 $nextID = getNextUserAutoIncrement();
+//                 postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $hasCorrectBool);
+//                 echo $picture;
+//                 postPicture($nextID, $picture);
+//             } catch (Exception $e) {
+//                 echo $e;
+//             }
+//             exit();
+//         }
+      
+      
+      
+      //    postUserData('max', 'pain', '2008-12-30', 'max.pain@gmx.com', '9476285837', '9283', 'Amsterdamn', 'Lethalstreet 7', 1, $pictureB64);
+    }
  }
 
 ?>
