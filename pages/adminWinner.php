@@ -2,6 +2,13 @@
     include_once('../CRUD.php');
     $allWinnerAndPrizeList = array();
 
+    /*
+     * Tier 4 = worst prize, currently Trostpreis Plüschmaskotchen
+     * Tier 3 = second worst prize, currently Einkaufsgutschein
+     * Tier 2 = second best prize, currently Kreuzfahrt
+     * Tier 1 = best prize, currently Auto
+     */
+
     function mergeWinnerLists(array $list, int $prizeID) {
         global $allWinnerAndPrizeList;
         foreach ($list as $userID){
@@ -32,82 +39,114 @@
     }
 
     function rollWinner(int $userCount){
-        $winnerList = array();
-        $luckyWinnerList = array();
-        $veryLuckyWinnerList = array();
-        $superLuckyWinnerList = array();
+
+        $tier4WinnerList = array();
+        $tier3WinnerList = array();
+        $tier2WinnerList = array();
+        $tier1WinnerList = array();
+
         $userIDs = getAllUserIDs();
 
+        $tier4WinnerCount = 33;
+        $tier3WinnerCount = 13;
+        $tier2WinnerCount = 3;
+        $tier1WinnerCount = 1;
+
+
+        $winnerCount = count($userIDs, COUNT_NORMAL);
+        if ($winnerCount<1){
+        }
+        elseif ($winnerCount<3){
+            $tier4WinnerCount = $winnerCount;
+            $tier3WinnerCount = $winnerCount;
+            $tier2WinnerCount = $winnerCount;
+        }
+        elseif ($winnerCount<13){
+            $tier4WinnerCount = $winnerCount;
+            $tier3WinnerCount = $winnerCount;
+
+        }
+        elseif($winnerCount<33){
+            $tier4WinnerCount = $winnerCount;
+        }
+
         // winnerList
-        for($i = 0; $i<33; $i++) {
+        echo $tier4WinnerCount;
+        for($i = 0; $i<$tier4WinnerCount; $i++) {
+
             $key = -1;
             while($key == -1) {
                 $winnerIndex = rand(0, sizeof($userIDs) - 1);
-                $key = array_search($userIDs[$winnerIndex], $winnerList);
+                $key = array_search($userIDs[$winnerIndex], $tier4WinnerList);
+
                 if ($key === false) {
-                    $winnerList[$i] = $userIDs[$winnerIndex];
+                    $tier4WinnerList[$i] = $userIDs[$winnerIndex];
                 } else {
                     $key = -1;
                 }
             }
         }
 
-        // luckyWinnerList
-        for($i = 0; $i<13; $i++) {
+        // tier3WinnerList
+        for($i = 0; $i<$tier3WinnerCount; $i++) {
             $key = -1;
             while($key == -1) {
-                $luckyWinner = rand(0, sizeof($winnerList) - 1);
-                $key = array_search($winnerList[$luckyWinner], $luckyWinnerList);
+                $luckyWinner = rand(0, sizeof($tier4WinnerList) - 1);
+                $key = array_search($tier4WinnerList[$luckyWinner], $tier3WinnerList);
                 if ($key === false) {
-                    $luckyWinnerList[$i] = $winnerList[$luckyWinner];
+                    $tier3WinnerList[$i] = $tier4WinnerList[$luckyWinner];
                 } else {
                     $key = -1;
                 }
             }
         }
-        $winnerList = removeOverlap($winnerList, $luckyWinnerList);
+        $tier4WinnerList = removeOverlap($tier4WinnerList, $tier3WinnerList);
 
-        // veryLuckyWinnerList
-        for($i = 0; $i<3; $i++){
+        // tier2WinnerList
+        for($i = 0; $i<$tier2WinnerCount; $i++){
             $key = -1;
             while($key == -1){
-                $veryLuckyWinner = rand(0, sizeof($luckyWinnerList) - 1);
-                $key = array_search($luckyWinnerList[$veryLuckyWinner], $veryLuckyWinnerList);
+                $veryLuckyWinner = rand(0, sizeof($tier3WinnerList) - 1);
+                $key = array_search($tier3WinnerList[$veryLuckyWinner], $tier2WinnerList);
                 if ($key === false) {
-                    $veryLuckyWinnerList[$i] = $luckyWinnerList[$veryLuckyWinner];
+                    $tier2WinnerList[$i] = $tier3WinnerList[$veryLuckyWinner];
                 } else {
                     $key = -1;
                 }
             }
         }
 
-        $luckyWinnerList = removeOverlap($luckyWinnerList, $veryLuckyWinnerList);
+        $tier3WinnerList = removeOverlap($tier3WinnerList, $tier2WinnerList);
 
-        // superLuckyWinnerList
-        for($i = 0; $i<1; $i++){
+        // tier1WinnerList
+        for($i = 0; $i<$tier1WinnerCount; $i++){
             $key = -1;
             while($key == -1){
-                $superLuckyWinner = rand(0, sizeof($veryLuckyWinnerList) - 1);
-                $key = array_search($veryLuckyWinnerList[$superLuckyWinner], $superLuckyWinnerList);
+                $superLuckyWinner = rand(0, sizeof($tier2WinnerList) - 1);
+                $key = array_search($tier2WinnerList[$superLuckyWinner], $tier1WinnerList);
                 if ($key === false) {
-                    $superLuckyWinnerList[$i] = $veryLuckyWinnerList[$superLuckyWinner];
+                    $tier1WinnerList[$i] = $tier2WinnerList[$superLuckyWinner];
                 } else {
                     $key = -1;
                 }
             }
         }
-        $veryLuckyWinnerList = removeOverlap($veryLuckyWinnerList, $superLuckyWinnerList);
+        $tier2WinnerList = removeOverlap($tier2WinnerList, $tier1WinnerList);
 
-        mergeWinnerLists($superLuckyWinnerList, 1);
-        mergeWinnerLists($veryLuckyWinnerList, 2);
-        mergeWinnerLists($luckyWinnerList, 3);
-        mergeWinnerLists($winnerList, 4);
+        mergeWinnerLists($tier1WinnerList, 1);
+        mergeWinnerLists($tier2WinnerList, 2);
+        mergeWinnerLists($tier3WinnerList, 3);
+        mergeWinnerLists($tier4WinnerList, 4);
     }
 
     if(isset($_POST['pickWinner'])){
+
         $userCount = getUserCount();
+
         rollWinner($userCount);
+
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -161,9 +200,9 @@
 </section>
 
 <section class="admin_sidebar">
-    <a href="adminUserData.php" class="sidebarRemoveLink"><div class="sidebarItem">Data</div></a>
-    <a href="adminWinner.php" class="sidebarRemoveLink"><div id="currentPage" class="sidebarItem">Winner</div></a>
-    <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
+    <a href="adminUserData.php" class="sidebarRemoveLink"><div class="sidebarItem">Benutzer</div></a>
+    <a href="adminWinner.php" class="sidebarRemoveLink"><div id="currentPage" class="sidebarItem">Gewinner</div></a>
+    <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Abmelden</div></a>
 </section>
 
 </body>

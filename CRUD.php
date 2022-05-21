@@ -64,7 +64,7 @@ function getUserCount(): int
 function getAllUserIDs(): array
 {
     global $pdo;
-    $query = $pdo->prepare('SELECT userID FROM olmadb.user;');
+    $query = $pdo->prepare("SELECT userID FROM olmadb.user WHERE answerCorrect = 1;");
     $query->execute();
     $res = $query->fetchAll();
     $arr = [];

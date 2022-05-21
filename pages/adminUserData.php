@@ -53,9 +53,9 @@
     </section>
 
     <section class="admin_sidebar">
-        <a href="adminUserData.php" class="sidebarRemoveLink"><div class="sidebarItem" id="currentPage">Data</div></a>
-        <a href="adminWinner.php" class="sidebarRemoveLink"><div  class="sidebarItem">Winner</div></a>
-        <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Logout</div></a>
+        <a href="adminUserData.php" class="sidebarRemoveLink"><div class="sidebarItem" id="currentPage">Benutzer</div></a>
+        <a href="adminWinner.php" class="sidebarRemoveLink"><div  class="sidebarItem">Gewinner</div></a>
+        <a href="home.php" class="sidebarRemoveLink"><div class="sidebarItem">Abmelden</div></a>
     </section>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
