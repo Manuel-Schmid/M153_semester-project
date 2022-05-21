@@ -24,10 +24,11 @@ CREATE TABLE IF NOT EXISTS olmadb.user (
   dob DATE NOT NULL,
   eMail VARCHAR(45) NOT NULL,
   phoneNr VARCHAR(45) NOT NULL,
-  postcode VARCHAR(45) NOT NULL,
+  postCode VARCHAR(45) NOT NULL,
   city varchar(255) NOT NULL,
-  address varchar(255) NOT NULL,
+  street varchar(255) NOT NULL,
   answerCorrect BOOLEAN NOT NULL,
+  image LONGBLOB NOT NULL,
   PRIMARY KEY (userID))
 ENGINE = InnoDB;
 
@@ -41,19 +42,6 @@ CREATE TABLE IF NOT EXISTS olmadb.prize (
   amount INT(11) NOT NULL,
   worth DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (prizeID))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table olmadb.selfie
--- -----------------------------------------------------
--- DROP TABLE IF EXISTS selfie;
-CREATE TABLE IF NOT EXISTS olmadb.selfie (
-  selfieID INT NOT NULL AUTO_INCREMENT,
-  fk_userID INT NOT NULL,
-  image BLOB NOT NULL,
-PRIMARY KEY (selfieID),
-FOREIGN KEY (fk_userID) REFERENCES user(userID))
 ENGINE = InnoDB;
 
 

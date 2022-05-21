@@ -53,14 +53,6 @@ function getAllUsers(): array
     return $query->fetchAll();
 }
 
-function getNextUserAutoIncrement(): int
-{
-    global $pdo;
-    $query = $pdo->prepare("SELECT auto_increment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'user'");
-    $query->execute();
-    return $query->fetch()[0];
-}
-
 function getUserCount(): int
 {
     global $pdo;
@@ -82,29 +74,57 @@ function getAllUserIDs(): array
     return $arr;
 }
 
-function postUserData($firstname, $lastname, $dob, $email, $phone, $street, $zip, $city, $correctAnswer): void
+function postUserData($firstname, $lastname, $dob, $email, $phone, $zip, $city, $street, $correctAnswer, $pictureB64): void
 {
-    global $pdo;
-    $query = $pdo->prepare('INSERT INTO user (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postcode`, `city`, `address`, `answerCorrect`) VALUES(?,?,?,?,?,?,?,?,?)');
-    $query->bindValue(1, $firstname);
-    $query->bindValue(2, $lastname);
-    $query->bindValue(3, $dob);
-    $query->bindValue(4, $email);
-    $query->bindValue(5, $phone);
-    $query->bindValue(6, $street);
-    $query->bindValue(7, $zip);
-    $query->bindValue(8, $city);
-    $query->bindValue(9, $correctAnswer);
-    $query->execute();
+//    global $pdo;
+//    $query = $pdo->prepare('INSERT INTO user (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postcode`, `city`, `address`, `answerCorrect`) VALUES(?,?,?,?,?,?,?,?,?)');
+//    $query->bindValue(1, $firstname);
+//    $query->bindValue(2, $lastname);
+//    $query->bindValue(3, $dob);
+//    $query->bindValue(4, $email);
+//    $query->bindValue(5, $phone);
+//    $query->bindValue(6, $street);
+//    $query->bindValue(7, $zip);
+//    $query->bindValue(8, $city);
+//    $query->bindValue(9, $correctAnswer);
+//    $query->execute();
+
+    try {
+        $link = getMysqliLink();
+        $stmt = mysqli_prepare($link,'INSERT INTO user (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postCode`, `city`, `street`, `answerCorrect`, `image`) VALUES(?,?,?,?,?,?,?,?,?,?)');
+        $stmt->bind_param('ssssssssib', $firstnameP, $lastnameP, $dobP, $emailP, $phoneP, $zipP, $cityP, $streetP, $correctAnswerP, $image);
+
+        $firstnameP = $firstname;
+        $lastnameP = $lastname;
+        $dobP = $dob;
+        $emailP = $email;
+        $phoneP = $phone;
+        $zipP = $zip;
+        $cityP = $city;
+        $streetP = $street;
+        $correctAnswerP = $correctAnswer;
+        $image = null; // null
+        $stmt->send_long_data(9, base64_decode($pictureB64));
+
+        mysqli_stmt_execute($stmt);
+//        printf("%d Row inserted.\n", mysqli_stmt_affected_rows($stmt));
+        mysqli_stmt_close($stmt);
+
+    } catch(Exception $e) {
+        echo 'ErrorMSG: ' . $e->getMessage();
+    }
 }
 
-function postPicture($userID, $picture)
-{
+// usage:
+// $picture = getImageSrc(128);
+// echo '<img src="'.$picture.'" alt="">';
+function getImageSrc($userID) {
     global $pdo;
-    $query = $pdo->prepare('INSERT INTO selfie (`fk_userID`, `image`) VALUES(?,?)');
+    $query = $pdo->prepare("SELECT image FROM olmadb.user WHERE userID = ?;");
     $query->bindValue(1, $userID);
-    $query->bindValue(2, $picture);
     $query->execute();
+    $picB64 = base64_encode($query->fetch()[0]);
+    return 'data:image/png;base64,'. $picB64;
 }
 
 function getQuiz(): array
