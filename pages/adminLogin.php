@@ -6,7 +6,7 @@ if (isset($_POST['password'])) {
     $pwd = $_POST['password'];
     if (checkAdminPW($pwd) == 1) {
         header('Location:adminUserData.php');
-        exit;
+        exit();
     } else {
         $error = 'YOU ARE WRONG.';
     }
