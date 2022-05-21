@@ -24,7 +24,7 @@ shuffle($answers);
 <body id="home_body">
 <header>
     <form action="home.php" method="post">
-        <a id="loginButton" href="adminLogin.php"><input type="button" name="Login" value="Login"></a>
+        <a id="loginButton" href="adminLogin.php"><input type="button" name="Login" value="Admin Anmeldung"></a>
         <a id="prizeScreenButton" href="prizesScreen.php"><input type="button" name="Login" value="Preisliste"></a>
     </form>
 </header>
@@ -50,7 +50,10 @@ shuffle($answers);
             <td><label for="lblAnswer1"><?php echo $answers[3] ?></label></td>
             <td><input type="radio" id="RaAnswer4" name="answer" value="<?php echo ($answers[3] === $quiz['correctAnswer'] ? 1 : 0) ?>"></td>
         </tr>
-    <button type="submit" class="center">Submit</button>
+        <tr>
+            <td><button type="submit" class="center">Bestätigen</button></td>
+        </tr>
+
 </form>
 
 </body>

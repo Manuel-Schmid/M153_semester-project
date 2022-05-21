@@ -23,15 +23,15 @@ if (isset($_POST['password'])) {
 <body>
 
 <header>
-    <h1>Admin-Login</h1>
+    <h1>Admin-Anmeldung</h1>
 </header>
 
 <form action="adminLogin.php" method="post">
-    <label>Password: </label>
+    <label>Passwort: </label>
     <input type="text" name="password">
     <br>
     <br>
-    <input type="submit" value="submit">
+    <input type="submit" value="Bestätigen">
     <br>
     <p class="error"><?php echo $error ?></p>
 </form>
