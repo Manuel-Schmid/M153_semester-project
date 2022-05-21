@@ -191,6 +191,10 @@ span {
     display: none;
 }
 
+.containerThanks{
+ margin-top: 1vh;
+}
+
 .error {
     color: red;
 }
