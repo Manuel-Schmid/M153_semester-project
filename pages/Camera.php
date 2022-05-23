@@ -63,20 +63,25 @@ if ($activeTab === 'registration') {
     $hasCorrectAnswer = $_SESSION['answer'];
     $hasCorrectBool = ($hasCorrectAnswer === "1") ? 1 : 0;
 
-    $allset = 0;
+    $allSet = 0;
 
     if (isset($_POST['participate'])) {
 
         if (!empty($_POST['inFirstname'])) {
             $firstname = $_POST['inFirstname'];
-            $allset++;
+            $allSet++;
         } else {
             $firstnameError = 'Bitte Vorname eingeben';
         }
 
         if (!empty($_POST['inLastname'])) {
-            $lastname = $_POST['inLastname'];
-            $allset++;
+            if($_POST['inLastname'] != $_POST['inFirstname']){
+                $lastname = $_POST['inLastname'];
+                $allSet++;
+            }
+            else{
+                $lastNameError = 'Nachname und Vorname dürfen nicht identisch sein';
+            }
         } else {
             $lastNameError = 'Bitte Nachnamen eingeben';
         }
@@ -85,7 +90,7 @@ if ($activeTab === 'registration') {
             $dobDate = strtotime($_POST['inDOB']);
             if (mktime(0, 0, 0, date('m', $dobDate), date('d', $dobDate), date('y', $dobDate)) < mktime(0, 0, 0, date('m'), date('j'), (date('Y') - 18))) {
                 $dob = $_POST['inDOB'];
-                $allset++;
+                $allSet++;
             } else {
                 $dobError = "Keine Teilnehmer unter 18";
             }
@@ -96,18 +101,18 @@ if ($activeTab === 'registration') {
 
         if (!empty($_POST['inEmail'])) {
             $email = $_POST['inEmail'];
-            $allset++;
+            $allSet++;
         } else {
 
             $emailError = 'Bitte E-Mail eingeben';
         }
 
         if (!empty($_POST['inPhone'])) {
-            if (preg_match('/^(\d{3})\s?(\d{3})\s?(\d{2})\s?(\d{2})$/', $_POST['inPhone'])) {
+            if (preg_match('/^(\+41)\s(\d{2})\s(\d{3})\s(\d{2})\s(\d{2})$/', $_POST['inPhone'])) {
                 $phone = $_POST['inPhone'];
-                $allset++;
+                $allSet++;
             } else {
-                $phoneError = 'Ungültige Tel.Nr. (079 123 45 67)';
+                $phoneError = 'Ungültige Tel.Nr. (+41 79 123 45 67)';
             }
         } else {
             $phoneError = 'Bitte Tel.Nr. eingeben';
@@ -116,7 +121,7 @@ if ($activeTab === 'registration') {
 
         if (!empty($_POST['inStreet'])) {
             $street = $_POST['inStreet'];
-            $allset++;
+            $allSet++;
         } else {
             $streetError = 'Bitte Strasse eingeben';
         }
@@ -124,7 +129,7 @@ if ($activeTab === 'registration') {
         if (!empty($_POST['inZip'])) {
             if (preg_match('/^\d{4}$/', $_POST['inZip'])) {
                 $zip = $_POST['inZip'];
-                $allset++;
+                $allSet++;
             } else {
                 $zipError = 'PLZ ungültig';
             }
@@ -134,12 +139,12 @@ if ($activeTab === 'registration') {
 
         if (!empty($_POST['inCity'])) {
                 $city = $_POST['inCity'];
-                $allset++;
+                $allSet++;
         } else {
             $cityError = 'Bitte Stadt eingeben';
         }
 
-        if ($allset == 8) {
+        if ($allSet == 8) {
             try {
                 postUserData($firstname, $lastname, $dob, $email, $phone, $zip, $city, $street, $hasCorrectBool, $pictureB64);
 //                 postUserData('max', 'pain', '2008-12-30', 'max.pain@gmx.com', '9476285837', '9283', 'Amsterdamn', 'Lethalstreet 7', 1, $pictureB64);
@@ -238,6 +243,5 @@ if ($activeTab === 'registration') {
         <input type="submit" name="participate" value="Teilnehmen" class="center submitbutton">
     </form>
 </section>
-
 </body>
 </html>
