@@ -10,8 +10,8 @@
 <body>
 <img src="../assets/Logo-M153.svg" alt="" width="150">
 <div class="containerThanks">
-    <h1>Danke viel mals für das Mitmachen!</h1>
-    <h2>Wir wünschen Ihnen viel Glück!</h2>
+    <h1>Wir bedanken uns ganz herzlich fürs Mitmachen!</h1>
+    <h2>Unser Team wünscht Ihnen viel Glück! ☘</h2>
 </div>
 </body>
 </html>

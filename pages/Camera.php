@@ -16,6 +16,8 @@ if (isset($_POST['camera-form'], $_POST["PictureJS"])) {
 //        echo '<p style="display: none">' . $data["PictureJS"] . '</p>';
 
         $pictureB64 = ($_POST["PictureJS"]);
+        $_SESSION['pictureB64'] = $pictureB64;
+
 //        $pictureB64 = base64_decode(substr($pictureB64, 22));
 
 //        echo $pictureB64;
@@ -45,7 +47,6 @@ if (isset($_POST['camera-form'], $_POST["PictureJS"])) {
 
 }
 else if(isset($_POST['participate'])){
-    $pictureB64 = $_POST['PicturePHP'];
     $activeTab = 'registration';
 }
 //else {
@@ -66,6 +67,7 @@ if ($activeTab === 'registration') {
     $allSet = 0;
 
     if (isset($_POST['participate'])) {
+        if ($pictureB64 == '') $pictureB64 = $_SESSION['pictureB64'];
 
         if (!empty($_POST['inFirstname'])) {
             $firstname = $_POST['inFirstname'];
@@ -112,7 +114,7 @@ if ($activeTab === 'registration') {
                 $phone = $_POST['inPhone'];
                 $allSet++;
             } else {
-                $phoneError = 'Ungültige Tel.Nr. (+41 79 123 45 67)';
+                $phoneError = 'Ungültige Tel.Nr. (Format: +41 XX XXX XX XX)';
             }
         } else {
             $phoneError = 'Bitte Tel.Nr. eingeben';
@@ -239,7 +241,6 @@ if ($activeTab === 'registration') {
                 <td><?php echo $streetError; ?></td>
             </tr>
         </table>
-        <input id="picture" type="hidden" name="PicturePHP" value="<?php echo $pictureB64 ?>">
         <input type="submit" name="participate" value="Teilnehmen" class="center submitbutton">
     </form>
 </section>
