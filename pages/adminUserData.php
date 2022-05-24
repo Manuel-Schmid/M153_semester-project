@@ -17,7 +17,7 @@
         <div class="table_users">
             <h1 class="center">Registrierte Benutzer</h1>
             <?php $users = getAllUsers(); ?>
-            <div class="container mt-5">
+            <div class="container mt-4">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12 m-auto">
                         <table class="table table-bordered table-hovered table-striped" id="users">
@@ -52,7 +52,6 @@
                     </div>
                 </div>
             </div>
-            <br>
         </div>
     </section>
 

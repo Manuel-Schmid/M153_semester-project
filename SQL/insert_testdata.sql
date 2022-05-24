@@ -5,7 +5,7 @@ USE olmadb ;
 -- -----------------------------------------------------
 INSERT INTO `olmadb`.`user` (`firstName`, `lastName`, `dob`, `eMail`, `phoneNr`, `postCode`, `city`, `street`, `answerCorrect`, `image`)
 VALUES
-  ("Skyler","Bray","15.12.22","sbray@yahoo.ca","(05827, '') 2216636","6168","Vlissegem","Ap #220-195 Sapien, Av.",1,''),
+  ("Skyler","Bray","15.12.22","sbray@yahoo.ca","(05827) 2216636","6168","Vlissegem","Ap #220-195 Sapien, Av.",1,''),
   ("Brenda","Norman","20.04.22","brenda-norman@google.edu","(039712) 994666","7238","Nedlands","Ap #195-7894 Pede. Road",0,''),
   ("Isabella","Huber","02.12.22","huber_isabella1083@hotmail.couk","(036210) 580719","9287","Tiruchirapalli","P.O. Box 122, 9608 Eu Street",1,''),
   ("Scarlet","Reyes","12.11.22","reyes.scarlet@aol.net","(0826) 69228857","8558","Kirov","Ap #937-8402 Turpis Av.",1,''),

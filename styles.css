@@ -56,15 +56,6 @@ body {
     background-color: gray;
 }
 
-/* specific for adminUserData.php file */
-.form {
-    top: 50%;
-    width: 50%;
-    height: 50%;
-    text-align: center;
-    margin: 17% auto auto;
-}
-
 .login-table {
     margin: auto;
 }
@@ -88,7 +79,7 @@ span {
 #users, #allWinnerAndPrizeList, #prizeList{
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: max-content;
+    /*width: max-content;*/
     margin: auto;
     overflow-y: scroll;
     height: 70vh;
