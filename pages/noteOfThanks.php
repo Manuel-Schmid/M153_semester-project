@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body class="container-content">
 <img src="../assets/Logo-M153.svg" alt="" width="150">
 <div class="containerThanks">
     <h1>Wir bedanken uns ganz herzlich fürs Mitmachen!</h1>

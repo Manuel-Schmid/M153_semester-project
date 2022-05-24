@@ -17,11 +17,14 @@ if(isset($_POST['backHome'])) {
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-
-    <br>
-    <h1>Preise</h1>
-    <br>
+<div class="nav">
     <form action="prizesScreen.php" method="post">
+        <a id="backHomeButton" href="home.php"><input type="submit" name="backHome" value="Zurück zum Startbildschirm" class="button"></a>
+    </form>
+</div>
+<div class="container-content">
+    <h1>Preise</h1>
+    <form action="prizesScreen.php" method="post" class="center">
         <br>
         <table id="prizeList" style="overflow-y: unset">
             <tr>
@@ -41,11 +44,7 @@ if(isset($_POST['backHome'])) {
                 </tr>
             <?php } ?>
         </table>
-
-        <input type="submit" name="backHome" value="Zurück zum Startbildschirm">
     </form>
-
-
-
+</div>
 </body>
 </html>

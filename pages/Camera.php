@@ -173,9 +173,10 @@ if ($activeTab === 'registration') {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<img src="../assets/Logo-M153.svg" alt="" width="70">
 
+<div class="container-content ">
 <section class="camera-section <?php if ($activeTab !== 'camera') echo 'veryHidden'; ?>">
+    <img src="../assets/Logo-M153.svg" alt="" width="70">
     <h1 class="center">Foto aufnehmen</h1>
     <div class="camera">
         <video id="webcam" autoplay="" playsinline="" width="auto" height="480" class="center"></video>
@@ -186,19 +187,21 @@ if ($activeTab === 'registration') {
 
         <div class="camera_controls">
             <form action="Camera.php" method="post">
-                <input id="btnTakePic" type="button" class="center" onclick="takeAPicture()" value="Foto aufnehmen"/>
+                <input id="btnTakePic" type="button" class="center button" onclick="takeAPicture()" value="Foto aufnehmen"/>
                 <input id="btnReTakePic" type="button" name="reshoot" onclick="reshoot_pic()" value="Neu"
-                       class="center hidden"/>
+                       class="center hidden button-back"/>
                 <input id="picture" type="hidden" name="PictureJS">
 
 
-                <input type="submit" id="btnSubmit" name="camera-form" class="center hidden" value="Weiter">
+                <input type="submit" id="btnSubmit" name="camera-form" class="center hidden button-submit" value="Weiter">
             </form>
         </div>
     </div>
 </section>
-
+</div>
+<div class="container-content">
 <section class="registration-section <?php if ($activeTab !== 'registration') echo 'veryHidden'; ?>">
+    <img src="../assets/Logo-M153.svg" alt="" width="150" class="picture">
     <h1 class="center">Registration</h1>
     <form action="camera.php" method="post" id="questions">
         <table class="center">
@@ -243,8 +246,9 @@ if ($activeTab === 'registration') {
                 <td><?php echo $streetError; ?></td>
             </tr>
         </table>
-        <input type="submit" name="participate" value="Teilnehmen" class="center submitbutton">
+        <input type="submit" name="participate" value="Teilnehmen" class="center button-submit">
     </form>
 </section>
+</div>
 </body>
 </html>
