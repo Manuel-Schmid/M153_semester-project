@@ -154,8 +154,6 @@ if ($activeTab === 'registration') {
                 <input id="btnReTakePic" type="button" name="reshoot" onclick="reshoot_pic()" value="Neu"
                        class="center hidden button-back"/>
                 <input id="picture" type="hidden" name="PictureJS">
-
-
                 <input type="submit" id="btnSubmit" name="camera-form" class="center hidden button-submit" value="Weiter">
             </form>
         </div>
