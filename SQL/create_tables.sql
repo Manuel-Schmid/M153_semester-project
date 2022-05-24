@@ -8,7 +8,6 @@ USE olmadb;
 
 DROP TABLE IF EXISTS olmadb.wrongAnswers ;
 DROP TABLE IF EXISTS olmadb.quiz;
-DROP TABLE IF EXISTS olmadb.selfie;
 DROP TABLE IF EXISTS olmadb.user;
 DROP TABLE IF EXISTS olmadb.prize;
 DROP TABLE IF EXISTS olmadb.admin ;
