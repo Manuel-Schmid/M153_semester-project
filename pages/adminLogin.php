@@ -36,6 +36,8 @@ if (isset($_POST['password'])) {
     <p class="error"><?php echo $error ?></p>
 </form>
 
+<button><a style="color: black; text-decoration: none" href="home.php">Zurück zum Startbildschirm</a></button>
+
 </body>
 </html>
 

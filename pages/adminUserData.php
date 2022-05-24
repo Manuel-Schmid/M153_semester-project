@@ -40,7 +40,7 @@
                                     <td><?php echo $user['firstName'] ?></td>
                                     <td><?php echo $user['lastName'] ?></td>
                                     <td><?php echo date_format(date_create($user['dob']), 'd.m.Y'); ?></td>
-                                    <td><?php echo $user['eMail'] ?></td>
+                                    <td style="word-break: break-word"><?php echo $user['eMail'] ?></td>
                                     <td><?php echo $user['phoneNr'] ?></td>
                                     <td><?php echo $user['street'] . ', ' . $user['postCode'] . ' ' . $user['city']  ?></td>
                                     <td><?php echo $user['answerCorrect'] ? 'Ja' : 'Nein'; ?></td>

@@ -42,7 +42,7 @@ if(isset($_POST['backHome'])) {
             <?php } ?>
         </table>
 
-        <input type="submit" name="backHome" value="zurück zum Startbildschirm">
+        <input type="submit" name="backHome" value="Zurück zum Startbildschirm">
     </form>
 
 

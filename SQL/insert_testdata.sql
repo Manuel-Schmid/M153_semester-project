@@ -165,5 +165,5 @@ INSERT INTO `olmadb`.`wrongAnswers`(fk_quizID, wAnswer1, wAnswer2, wAnswer3)VALU
 -- Table olmadb.admin
 -- -----------------------------------------------------
 INSERT INTO `olmadb`.`admin`
-(`adminID`, `password`) VALUES (1, 'manyIsGod!');
+(`adminID`, `password`) VALUES (1, 'do9>of|<');
 
