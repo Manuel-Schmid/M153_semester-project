@@ -74,6 +74,7 @@ span {
 
 .table_users {
     text-align: center;
+    font-size: 15px;
 }
 
 #users, #allWinnerAndPrizeList, #prizeList{
