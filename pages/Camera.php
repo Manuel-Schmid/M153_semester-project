@@ -110,8 +110,10 @@ if ($activeTab === 'registration') {
         }
 
         if (!empty($_POST['inPhone'])) {
-            if (preg_match('/^(\+41)\s(\d{2})\s(\d{3})\s(\d{2})\s(\d{2})$/', $_POST['inPhone'])) {
+            if (preg_match('/^(\+41)\s?(\d{2})\s?(\d{3})\s?(\d{2})\s?(\d{2})$/', $_POST['inPhone'])) {
                 $phone = $_POST['inPhone'];
+                $phone = str_replace(' ', '', $phone);
+                $phone = substr($phone, 0, 3) . ' ' . substr($phone, 3, 2) . '  ' . substr($phone, 5, 3) . ' ' . substr($phone, 8, 2). ' ' . substr($phone, 10, 2);
                 $allSet++;
             } else {
                 $phoneError = 'Ungültige Tel.Nr. (Format: +41 XX XXX XX XX)';
