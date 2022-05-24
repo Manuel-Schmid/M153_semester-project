@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Refresh" content="10; url='home.php'" />
+    <meta http-equiv="Refresh" content="4; url='home.php'" />
     <title>Olma | Home</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

@@ -22,7 +22,7 @@ try {
     }
     $end = microtime(true);
 
-    // (D) CLOSE & RESULTS
+    // CLOSE & RESULTS
     $taken = $end - $start;
     $average = $taken / $runs;
     echo "Total runs: $runs<br> 

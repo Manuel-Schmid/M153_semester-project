@@ -130,7 +130,7 @@ function getImageSrc($userID) {
 function getQuiz(): array
 {
     global $pdo;
-    $query = $pdo->prepare('SELECT question, correctAnswer, wAnswer1, wAnswer2, wAnswer3 FROM olmadb.quiz JOIN wrongAnswers ON fk_quizID = quizID');
+    $query = $pdo->prepare('SELECT question, correctAnswer, wAnswer1, wAnswer2, wAnswer3 FROM olmadb.quiz JOIN wrongAnswers ON fk_quizID = quizID WHERE quizID=2'); // 1
     $query->execute();
     return $query->fetchAll()[0];
 }
