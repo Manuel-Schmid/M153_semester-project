@@ -156,13 +156,13 @@
     <title>Olma | Home</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
-<body id="admin-view_body">
+<body id="admin-view_body" class="center">
 <section class="admin_content">
     <br>
     <h1>Gewinner</h1>
     <br>
     <form action="adminWinner.php" method="post">
-        <input type="submit" name="pickWinner" value="Gewinner auslosen">
+        <input type="submit" name="pickWinner" value="Gewinner auslosen" class="button">
         <br>
         <br>
         <table id="allWinnerAndPrizeList" style=<?php

@@ -22,22 +22,26 @@ if (isset($_POST['password'])) {
 </head>
 <body>
 
-<header>
-    <h1>Admin-Anmeldung</h1>
-</header>
+<div class="nav-adminlogin">
+    <form action="home.php" method="post">
+        <a type="button" class="button"" href="home.php"><input type="button" name="Login" value="Zurück zum Startbildschirm" class="button"></a>
+    </form>
+</div>
 
-<form action="adminLogin.php" method="post">
-    <label>Passwort: </label>
-    <input type="text" name="password">
-    <br>
-    <br>
-    <input type="submit" value="Bestätigen">
-    <br>
+
+
+<div class="container-content">
+    <h1 class="title-admin">Admin-Anmeldung</h1>
     <p class="error"><?php echo $error ?></p>
-</form>
-
-<button><a style="color: black; text-decoration: none" href="home.php">Zurück zum Startbildschirm</a></button>
-
+    <form action="adminLogin.php" method="post">
+        <label>Passwort: </label>
+        <input type="text" name="password">
+        <br>
+        <br>
+        <input type="submit" value="Bestätigen" class="button-submit">
+        <br>
+    </form>
+</div>
 </body>
 </html>
 

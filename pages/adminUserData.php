@@ -15,7 +15,10 @@
 <body>
     <section class="admin_content">
         <div class="table_users">
-            <h1 class="center">Registrierte Benutzer</h1>
+            <div class="title">
+                <h1 class="center">Registrierte Benutzer</h1>
+            </div>
+
             <?php $users = getAllUsers(); ?>
             <div class="container mt-4">
                 <div class="row">
