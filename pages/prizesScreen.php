@@ -5,7 +5,6 @@ if(isset($_POST['backHome'])) {
     echo "test";
     header('Location:home.php');
     exit();
-
 }
 ?>
 
@@ -32,7 +31,6 @@ if(isset($_POST['backHome'])) {
                 <th>Wert</th>
                 <th>Anzahl</th>
             </tr>
-
             <?php
             $prizeList = getAllPrizes();
             foreach ($prizeList as $prize) {

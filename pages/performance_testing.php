@@ -1,5 +1,5 @@
 <?php
-// (A) CONNECT TO DATABASE
+    // CONNECT TO DATABASE
 $dsn = "mysql:host=213.196.190.205; dbname=olmadb";
 $user = "odb_admin";
 $pw = "]T&7]/9GqCzn=8zY1vFG}T4s5";

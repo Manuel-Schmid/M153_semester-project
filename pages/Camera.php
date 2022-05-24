@@ -11,35 +11,8 @@ $firstnameError = $lastNameError = $dobError = $emailError = $phoneError = $stre
 if (isset($_POST['camera-form'], $_POST["PictureJS"])) {
     try {
         $activeTab = 'registration';
-
-//        $data = $_POST;
-//        echo '<p style="display: none">' . $data["PictureJS"] . '</p>';
-
         $pictureB64 = ($_POST["PictureJS"]);
         $_SESSION['pictureB64'] = $pictureB64;
-
-//        $pictureB64 = base64_decode(substr($pictureB64, 22));
-
-//        echo $pictureB64;
-//        echo base64_encode(base64_decode($pictureB64));
-
-//        var_dump($pictureB64);
-//        echo '<img src="'.$pictureB64.'" alt="">';
-
-//        $pictureBlob = base64_decode(substr($pictureB64, 22)); // data:image/png;base64,
-//        $pictureBlob = base64_decode($pictureB64);
-//        echo '<br><br><br>';
-//        $pictureBlob = addslashes($pictureBlob);
-//        echo $pictureBlob;
-
-//        var_dump(file_get_contents($pictureBlob));
-
-//        $nextID = getNextUserAutoIncrement();
-//        postPicture($nextID, $pictureB64);
-
-        //    var_dump($pictureBlob);
-        //    var_dump(base64_encode($pictureBlob));
-//        echo 'halso';
 
     } catch (Exception $e) {
         echo 'ErrorMSG: ' . $e->getMessage();
@@ -49,16 +22,6 @@ if (isset($_POST['camera-form'], $_POST["PictureJS"])) {
 else if(isset($_POST['participate'])){
     $activeTab = 'registration';
 }
-//else {
-//    $activeTab = 'camera';
-//}
-
-
-//if ($activeTab === 'camera') {
-//
-//
-//} else
-
 
 if ($activeTab === 'registration') {
     $hasCorrectAnswer = $_SESSION['answer'];
